@@ -7,7 +7,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
-
+import styled from "styled-components";
+import Sidebar from "./components/Sidebar"; 
 
 
 function App() {
@@ -16,11 +17,16 @@ function App() {
       
       <Router>
       <>
-        <Switch>
-          <Route path="/" exact >
-            <Header/>
-          </Route>
-        </Switch>
+        <Header/>
+        <AppBody>
+          <Sidebar/>
+          <Switch>
+            <Route path="/" exact >
+              {/* Chat */}
+            </Route>
+          </Switch>
+        </AppBody>
+
       </>
     </Router>
     </div>
@@ -28,3 +34,10 @@ function App() {
 }
 
 export default App;
+
+
+const AppBody = styled.div`
+  display: flex;
+  height: 100vh;
+
+`; 

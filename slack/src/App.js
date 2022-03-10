@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Header from './components/Header';
 import {
@@ -9,28 +9,49 @@ import {
 } from "react-router-dom";
 import styled from "styled-components";
 import Sidebar from "./components/Sidebar"; 
+import Login from './components/Login';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import {auth} from "./firebase";
+import {firebase} from "./firebase.js";
 
 
 function App() {
+  const [isUserSignedIn, setIsUserSignedIn] = useState(auth);
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      return setIsUserSignedIn(true);
+    }
+    setIsUserSignedIn(false);
+  })
+ if (isUserSignedIn === true) {
+   return (
+    <>
+     <Header/>
+     <AppBody>
+       <Sidebar/>
+     <Router>
+       <Switch> 
+         <Route path="/" exact>
+           </Route>
+       </Switch>
+       </Router>
+       </AppBody>
+       
+     
+     </>
+   );
+  
+}
+ else {
   return (
-    <div className="App">
-      
-      <Router>
-      <>
-        <Header/>
-        <AppBody>
-          <Sidebar/>
-          <Switch>
-            <Route path="/" exact >
-              {/* Chat */}
-            </Route>
-          </Switch>
-        </AppBody>
-
-      </>
+    <Router>
+      <Switch>
+        <Route path="/" component={Login}/>
+      </Switch>
     </Router>
-    </div>
-  );
+  ) ;
+ }
+
 }
 
 export default App;

@@ -1,5 +1,5 @@
+import React,{useState,useEffect} from "react";
 import styled from "styled-components";
-import React from 'react';
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import CreateIcon from "@material-ui/icons/Create";
 import InsertCommentIcon from "@material-ui/icons/InsertComment"
@@ -19,15 +19,26 @@ import {useCollection} from "react-firebase-hooks/firestore";
 
 
 function Sidebar(){
-    // const [channels, loading, error] = useCollection(db.collection("rooms"));
+    const [channels, setChannels] = useState([]);
+    useEffect(() => {
+        db.collection('rooms').onSnapshot((snapshot) => (
+            setChannels(
+                snapshot.docs.map((doc) =>(
+                    {
+                        id:doc.id,
+                        name: doc.data().name,
+                    }))
+            )
+        ));
+    },[])
     return(
         <SidebarContainer>
             <SidebarHeader>
                 <SidebarInfo>
-                    <h2>SLACK-CLONE APP</h2>
+                    <h2>KONNEKT APP</h2>
                     <h3>
                         <FiberManualRecordIcon/>
-                        Team 12
+                        Any time - Anywhere
                     </h3> 
                 </SidebarInfo>
                 <CreateIcon/>
@@ -45,6 +56,9 @@ function Sidebar(){
             <SidebarOption Icon={ExpandMoreIcon} title="Channels"/>
             <hr/>
             <SidebarOption Icon ={AddIcon} addChannelOption title="Add Channel"/>
+            {channels.map((channel) => (
+                <SidebarOption title={channel.name} id = {channel.id}/>
+            ))}
             {/* {channels?.docs.map((doc) => (
                 <SidebarOption 
                 key={doc.id}  

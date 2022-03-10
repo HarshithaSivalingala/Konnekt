@@ -19,7 +19,6 @@ function Login() {
             <h1> 
                 Sign in to Konnect
             </h1>
-            <p>konnect.com</p>
 
             <Button onClick={signIn}>
                 Sign in with Google

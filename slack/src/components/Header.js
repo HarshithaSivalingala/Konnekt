@@ -3,9 +3,15 @@ import styled from "styled-components";
 import {Avatar} from "@material-ui/core";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import SearchIcon from "@material-ui/icons/Search";
-import HelpOutlineIcon from "@material-ui/icons/HelpOutline"
+import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
+import {Button} from "@material-ui/core";
+import { firebase } from '../firebase';
+
 
 function Header() {
+   const signOut=()=>{
+      firebase.auth().signOut();
+   }
   return (
    <HeaderContainer>
       <HeaderLeft>
@@ -14,6 +20,7 @@ function Header() {
             
          />
          <AccessTimeIcon/>
+         
       </HeaderLeft>
       <HeaderSearch>
          <SearchIcon />
@@ -21,7 +28,14 @@ function Header() {
 
       </HeaderSearch>
       <HeaderRight>
-          <HelpOutlineIcon />
+      <HelpOutlineIcon /> 
+          <HeaderButton >
+            <Button onClick={signOut} color="primary">
+            Sign Out
+               </Button>
+          </HeaderButton> 
+          
+            
       </HeaderRight>
    </HeaderContainer>
 );
@@ -42,11 +56,35 @@ border:1px gray solid;
    background-color:transparent;
    border:none;
    text-align:center;
-   min-width:30vw;
+   min-width:40vw;
    outline:0;
-   color:white;
+   color:yellow
+   ;
 }
 `;
+const HeaderButton = styled.div`
+box-sizing:border-box;
+display:inline-block;
+text-align:center;
+padding:8x 12px;
+color:white;
+background-color:#421f44;
+border:3px solid;
+border-color:transparent;
+border-radius:10px;
+font-size:18px;
+font-color:white;
+&:hover:not(:disabled),
+&:active:not(:disabled),
+&:focus{
+   outline:0;
+   color:white;
+   border-color:grey;
+   backgroud-color:salmon;
+   cusor:pointer;
+}
+
+`
 
 const HeaderContainer = styled.div`
    display : flex ;

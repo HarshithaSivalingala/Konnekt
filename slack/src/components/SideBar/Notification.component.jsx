@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Label } from 'semantic-ui-react';
 
-import firebase from "../../../server/firebase";
+import firebase from "firebase";
 
 export const Notification = (props) => {
 

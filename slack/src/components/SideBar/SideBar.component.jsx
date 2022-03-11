@@ -1,9 +1,9 @@
 import React from 'react';
 import { Menu } from 'semantic-ui-react';
-import UserInfo from "./UserInfo/UserInfo.component";
-import Channels from "./Channels/Channels.component";
-import PrivateChat from "./PrivateChat/PrivateChat.component";
-import FavouriteChannels from "./FavouriteChannels/FavouriteChannels.component";
+import UserInfo from "./UserInfo.component";
+import Channels from "./Channels.component";
+import PrivateChat from "./PrivateChat.component";
+import FavouriteChannels from "./FavouriteChannels.component";
 
 import "./SideBar.css";
 

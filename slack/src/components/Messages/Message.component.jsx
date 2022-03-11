@@ -1,11 +1,11 @@
 import React, { useEffect, useState,useRef } from 'react';
 
-import MessageHeader from './MessageHeader/MessageHeader.component';
-import MessageContent from "./MessageContent/MessageContent.component";
-import MessageInput from "./MessageInput/MessageInput.component";
+import MessageHeader from './MessageHeader.component';
+import MessageContent from "./MessageContent.component";
+import MessageInput from "./MessageInput.component";
 import { connect } from "react-redux";
 import { setfavouriteChannel, removefavouriteChannel } from "../../store/actioncreator";
-import firebase from "../../server/firebase";
+import firebase from "firebase";
 import { Segment, Comment } from 'semantic-ui-react';
 import "./Messages.css"; 
 

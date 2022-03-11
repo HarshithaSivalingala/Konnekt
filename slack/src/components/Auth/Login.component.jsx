@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Grid, Form, Segment, Header, Icon, Button, Message } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
-import firebase from '../../../server/firebase';
+import firebase from 'firebase';
 
-import "../Auth.css"
+import "./Auth.css"
 
 const Login = () => {
 

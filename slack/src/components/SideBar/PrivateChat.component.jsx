@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import firebase from "../../../server/firebase";
-import { setChannel } from "../../../store/actioncreator"
-import { Notification } from "../Notification/Notification.component";
+import firebase from "firebase";
+import { setChannel } from "../../store/actioncreator"
+import { Notification } from "./Notification.component";
 
 import { Menu, Icon } from 'semantic-ui-react';
 

@@ -1,4 +1,4 @@
-import { SET_USER, SET_CHANNEL, SET_FAVOURITECHANNEL, REMOVE_FAVOURITECHANNEL } from './actiontypes';
+import { SET_USER, SET_CHANNEL, SET_FAVOURITECHANNEL, REMOVE_FAVOURITECHANNEL } from './actiontype';
 import { combineReducers } from "redux";
 
 let defaultUserState = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setChannel } from "../../../store/actioncreator"
+import { setChannel } from "../../store/actioncreator"
 
 import { Menu, Icon } from 'semantic-ui-react';
 

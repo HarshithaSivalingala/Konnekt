@@ -76,12 +76,12 @@ const PrivateChat = (props) => {
                     onClick={() => selectUser(user)}
                     active={props.channel && generateChannelId(user.id) === props.channel.id}
                 >
-                    <Icon name="circle" color={`${connectedUsersState.indexOf(user.id) !== -1 ? "green" : "red"}`} />
+                    {/* <Icon name="circle" color={`${connectedUsersState.indexOf(user.id) !== -1 ? "green" : "red"}`} /> */}
 
-                    <Notification user={props.user} channel={props.channel}
+                    {/* <Notification user={props.user} channel={props.channel}
                         notificationChannelId={generateChannelId(user.id)}
                         displayName={"@ " + user.name} />
-                        
+                         */}
                 </Menu.Item>
             })
         }

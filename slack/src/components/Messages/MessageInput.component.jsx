@@ -75,7 +75,7 @@ const MessageInput = (props) => {
             label={createActionButtons()}
             labelPosition="right"
         />
-        <ImageUpload uploadImage={uploadImage} open={fileDialogState} onClose={() => setFileDialog(false)} />
+        {/* <ImageUpload uploadImage={uploadImage} open={fileDialogState} onClose={() => setFileDialog(false)} /> */}
     </Segment>
 }
 

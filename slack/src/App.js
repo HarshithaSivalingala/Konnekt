@@ -8,9 +8,8 @@ import Auth from './components/Auth/Login.component'
 
 function App() {
   return (
-    
     <Grid columns="equal">
-      <Auth />
+      
       <SideBar />
       <Grid.Column className="messagepanel">
         <Messages />

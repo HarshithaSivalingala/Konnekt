@@ -10,10 +10,9 @@ import {
 import styled from "styled-components";
 import Sidebar from "./components/Sidebar"; 
 import Login from './components/Login';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import {auth} from "./firebase";
 import {firebase} from "./firebase.js";
-
+import Chat from './components/Chat';
 
 function App() {
   const [isUserSignedIn, setIsUserSignedIn] = useState(auth);
@@ -29,15 +28,15 @@ function App() {
      <Header/>
      <AppBody>
        <Sidebar/>
+       
      <Router>
        <Switch> 
-         <Route path="/" exact>
-           </Route>
+        <Route exact path="/">
+          <Chat />
+        </Route>
        </Switch>
        </Router>
        </AppBody>
-       
-     
      </>
    );
   

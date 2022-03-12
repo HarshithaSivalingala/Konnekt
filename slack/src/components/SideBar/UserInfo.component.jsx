@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Header, Icon, Image, Dropdown } from 'semantic-ui-react';
 import { connect } from "react-redux";
 import firebase from 'firebase';
+import Avatar from 'react-avatar';
 
 import "./UserInfo.css";
 
@@ -33,7 +34,12 @@ const UserInfo = (props) => {
                         <Dropdown
                             trigger={
                                 <span>
-                                    <Image src={props.user.photoURL} avatar></Image>
+                                    <Avatar 
+                                    name={props.user.displayName}
+                                    size={35}
+                                    round='20px'
+                                    style={{marginRight:'5px'}}
+                                    />
                                     {props.user.displayName}
                                 </span>
                             }

@@ -3,7 +3,7 @@ import { Grid, Form, Segment, Header, Icon, Button, Message } from 'semantic-ui-
 import { Link } from 'react-router-dom';
 import logo from "../../konnect-logo.png";
 import firebase from 'firebase';
-// import "./Login.css"
+import "./Login.css"
 import "./Auth.css"
 
 const Login = () => {
@@ -70,12 +70,12 @@ const Login = () => {
     <Grid verticalAlign="middle" textAlign="center" className="grid-form" >
     
         <Grid.Column style={{ maxWidth: '500px' }}>
-            <Header icon as="h2">
-            Login
+            <Header icon as="h2" color="pink" >
+            Log in to Konnekt
             </Header>
             <Form onSubmit={onSubmit}>
-                <Segment stacked>
-                    <Form.Input
+                <Segment Raised>
+                    <Form.Input 
                         name="email"
                         value={userState.email}
                         icon="mail"
@@ -95,6 +95,10 @@ const Login = () => {
                     />
                 </Segment>
                 <Button disabled={isLoading} loading={isLoading}>Login</Button>
+                <Button circular color='facebook' icon='facebook' />
+                <Button circular color='twitter' icon='twitter' />
+                <Button circular color='linkedin' icon='linkedin' />
+                <Button circular color='google plus' icon='google plus' />
             </Form>
             {errorState.length > 0 && <Message error>
                 <h3>Errors</h3>
@@ -102,7 +106,7 @@ const Login = () => {
             </Message>
             }
             <Message>
-                Not an User? <Link to="/register" >Register </Link>
+                Don't have an account? <Link to="/register" > Register here </Link>
             </Message>
         </Grid.Column>
         

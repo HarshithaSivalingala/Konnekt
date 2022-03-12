@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Grid, Form, Segment, Header, Icon, Button, Message } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
-
+import { Grid, Form, Segment, Header, Icon, Button, Message } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import logo from "../../konnect-logo.png";
 import firebase from 'firebase';
-
+// import "./Login.css"
 import "./Auth.css"
 
 const Login = () => {
+    
 
     let user = {
         email: '',
@@ -63,12 +64,15 @@ const Login = () => {
         }
     }
 
-    return <Grid verticalAlign="middle" textAlign="center" className="grid-form" >
+    return ( 
+        <>
+        
+    <Grid verticalAlign="middle" textAlign="center" className="grid-form" >
+    
         <Grid.Column style={{ maxWidth: '500px' }}>
             <Header icon as="h2">
-                <Icon name="" />
             Login
-        </Header>
+            </Header>
             <Form onSubmit={onSubmit}>
                 <Segment stacked>
                     <Form.Input
@@ -101,7 +105,10 @@ const Login = () => {
                 Not an User? <Link to="/register" >Register </Link>
             </Message>
         </Grid.Column>
+        
     </Grid>
+    </>
+    );
 }
 
 export default Login;

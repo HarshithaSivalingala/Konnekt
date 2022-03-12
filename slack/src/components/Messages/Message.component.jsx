@@ -61,7 +61,8 @@ const Messages = (props) => {
         let messagesToDisplay = searchTermState ? filterMessageBySearchTerm() : messagesState;
         if (messagesToDisplay.length > 0) {
             return messagesToDisplay.map((message) => {
-                return <MessageContent imageLoaded={imageLoaded} ownMessage={message.user.id === props.user.uid} key={message.timestamp} message={message} />
+                return <MessageContent imageLoaded={imageLoaded} key={message.timestamp} message={message} />
+                // ownMessage={message.user.id === props.user.uid}
             })
         }
     }

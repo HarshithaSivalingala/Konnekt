@@ -1,8 +1,12 @@
 .messagecontent{
     height: 500px;
+    width: auto;
     overflow-y: scroll;
 }
 
 .messages{
     padding-top : 10px;
+}
+.header {
+    /* background-color: rgb(240, 157, 236); */
 }

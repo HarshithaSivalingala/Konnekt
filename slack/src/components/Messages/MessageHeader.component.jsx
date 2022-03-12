@@ -1,10 +1,11 @@
 import React from 'react';
 import { Segment, Header, Input, Icon } from 'semantic-ui-react';
+import './Messages.css';
 
 const MessageHeader = (props) => {
     return <Segment clearing>
         <Header floated="left" fluid="true" as="h2">
-            <span>
+            <span >
                 {(props.isPrivateChat ? "@ " : "# ") + props.channelName}
                 {!props.isPrivateChat && <Icon
                     onClick={props.starChange}

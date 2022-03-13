@@ -70,8 +70,9 @@ const Login = () => {
     <Grid verticalAlign="middle" textAlign="center" className="grid-form" >
     
         <Grid.Column style={{ maxWidth: '500px' }}>
-            <Header icon as="h2" color="pink" >
-            Log in to Konnekt
+            <Header icon as="h2" color ="teal"  >
+                <Icon name="user circle" />
+                Log in to Konnekt
             </Header>
             <Form onSubmit={onSubmit}>
                 <Segment Raised>

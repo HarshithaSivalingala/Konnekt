@@ -91,6 +91,9 @@ const Channels = (props) => {
     }
 
     const onSubmit = () => {
+        setModalOpen(false);
+        privateSet(false);
+        
 
         if (!checkIfFormValid()) {
             return;

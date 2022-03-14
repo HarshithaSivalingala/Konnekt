@@ -5,15 +5,11 @@ import { setChannel} from "../../store/actioncreator";
 import { Notification } from "./Notification.component";
 
 import './Channels.css';
-import { Menu, Icon, Modal, Button, Form, Segment} from 'semantic-ui-react';
+import { Menu, Icon} from 'semantic-ui-react';
 
 const Private  = (props) => {
-    const [modalOpenState1, setModalOpenState1] = useState(false);
-    const [modalopen1, setModalOpen1] = useState(false);
-    const [channelAddState, setChannelAddState] = useState({ name: '', description: ''});
-    const [isLoadingState, setLoadingState] = useState(false);
     const [prichannelsState, setpriChannelsState] = useState([]);
-    const [privateOpen,privateSet] = useState(false);
+    
 
     const channels = firebase.database().ref("prichannels");
     const users = firebase.database().ref("users");
@@ -36,17 +32,8 @@ const Private  = (props) => {
         }
     },[!props.channel ?prichannelsState : null ])
 
-    const openModalPrivate = () => {
-        setModalOpenState1(true);
-    }
 
-    const closeModalPrivate = () => {
-        setModalOpenState1(false);
-    }
 
-    const checkIfFormValid = () => {
-        return channelAddState && channelAddState.name && channelAddState.description;
-    }
 
     const displayChannels = () => {
         if (prichannelsState.length > 0) {
@@ -59,7 +46,7 @@ const Private  = (props) => {
                 >
                       <Notification user={props.user} channel={props.channel}
                         notificationChannelId={channel.id}
-                        displayName= {"$ " + channel.name} />
+                        displayName= {"# " + channel.name} />
                    
                 </Menu.Item>
             })
@@ -79,48 +66,7 @@ const Private  = (props) => {
         lastVisited.onDisconnect().set(firebase.database.ServerValue.TIMESTAMP);
     }
 
-    const onSubmit1 = () => {
-        setModalOpen1(false);
-        privateSet(false);
-        
-
-        if (!checkIfFormValid()) {
-            return;
-        }
-
-        const key = channels.push().key;
-
-        const channel = {
-            id: key,
-            name: channelAddState.name,
-            description: channelAddState.description,
-            created_by: {
-                name: props.user.displayName,
-                avatar: props.user.photoURL
-            }
-        }
-        setLoadingState(true);
-        channels.child(key)
-            .update(channel)
-            .then(() => {
-                setChannelAddState({ name: '', description: '' });
-                setLoadingState(false);
-                closeModalPrivate();
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    }
-
-    const handleInput = (e) => {
-
-        let target = e.target;
-        setChannelAddState((currentState) => {
-            let updatedState = { ...currentState };
-            updatedState[target.name] = target.value;
-            return updatedState;
-        })
-    }
+    
 
     return <> <Menu.Menu style={{ marginTop: '35px' }}>
   

@@ -67,8 +67,7 @@ const Channels = (props) => {
 
     const closeModalPrivate = () => {
         setModalOpenState1(false);
-       
-        
+          
     }
 
     const openModal = () => {
@@ -84,8 +83,6 @@ const Channels = (props) => {
     const closeModal2 = () => {
         setModalOpen(false);
     }
-
-  
 
     const checkIfFormValid = () => {
         return channelAddState && channelAddState.name && channelAddState.description;
@@ -118,10 +115,7 @@ const Channels = (props) => {
                 >
                       <Notification user={props.user} channel={props.channel}
                         notificationChannelId={channel.id}
-                        displayName= {"$ " + channel.name} />
-                     <Notification user={props.user} channel={props.channel}
-                        notificationChannelId={channel.id}
-                        displayName= {"# " + channel.name} /> 
+                        displayName= {"# " + channel.name} />
                    
                 </Menu.Item>
             })
@@ -129,7 +123,6 @@ const Channels = (props) => {
     }
 
     const selectChannel = (channel) => {
-        // prompt("trial prompt")
         setLastVisited(props.user,props.channel);
         setLastVisited(props.user,channel);
         props.selectChannel(channel);
@@ -292,6 +285,20 @@ const Channels = (props) => {
                             type="text"
                             placeholder="Enter Channel Description"
                         />
+                        <Form.Input
+                        name="password"
+                        value={channelAddState.password}
+                        onChange={handleInput}
+                        type="password"
+                        placeholder="User Password"
+                    />
+                    <Form.Input
+                        name="confirmpassword"
+                        value={channelAddState.confirmpassword}
+                        onChange={handleInput}
+                        type="password"
+                        placeholder="Confirm Password"
+                    />
                     </Segment>
                 </Form>
             </Modal.Content>

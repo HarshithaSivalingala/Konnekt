@@ -227,23 +227,23 @@ const Channels = (props) => {
     }
 
     return <> <Menu.Menu style={{ marginTop: '35px' }}>
+        <Menu.Item>
+            <span className="clickable" onClick={openModal2} >
+                <Icon name="add" /> ADD CHANNEL
+            </span>
+        </Menu.Item>
+        <br></br>  
         <Menu.Item style={{fontSize : '17px'}}>
             <span>
-                <Icon name="exchange" />  Public
+                <Icon name="bullhorn" />  Public
             </span>
             <tb/>({pubchannelsState.length})
         </Menu.Item>
         {displayChannels()}
         <Menu.Item>
-            <span className="clickable" onClick={openModal2} >
-                <Icon name="add" /> ADD
-            </span>
-        </Menu.Item>
-        <Menu.Item>
         <Modal size={'tiny'}open={modalopen} onClose={closeModal}>
             <Modal.Header>
                 Choose a new Workspace 
-
             </Modal.Header>
             
             <Modal.Actions>
@@ -260,8 +260,6 @@ const Channels = (props) => {
                 </Button>
             </Modal.Actions>
         </Modal>
-        
-
         </Menu.Item>
     </Menu.Menu>
     <Modal open={modalOpenState1} onClose={closeModalPrivate}>
@@ -283,22 +281,22 @@ const Channels = (props) => {
                             value={channelAddState.description}
                             onChange={handleInput}
                             type="text"
-                            placeholder="Enter Channel Description"
+                            placeholder="User Id"
                         />
                         <Form.Input
-                        name="password"
-                        value={channelAddState.password}
-                        onChange={handleInput}
-                        type="password"
-                        placeholder="User Password"
-                    />
-                    <Form.Input
-                        name="confirmpassword"
-                        value={channelAddState.confirmpassword}
-                        onChange={handleInput}
-                        type="password"
-                        placeholder="Confirm Password"
-                    />
+                            name="password"
+                            value={channelAddState.password}
+                            onChange={handleInput}
+                            type="password"
+                            placeholder="User Password"
+                        />
+                        <Form.Input
+                            name="confirmpassword"
+                            value={channelAddState.confirmpassword}
+                            onChange={handleInput}
+                            type="password"
+                            placeholder="Confirm Password"
+                        />
                     </Segment>
                 </Form>
             </Modal.Content>

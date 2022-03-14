@@ -54,7 +54,7 @@ const Private  = (props) => {
     }
 
     const selectChannel1 = (channel) => {
-        // prompt("trial prompt")
+        prompt("password")
         setLastVisited1(props.user,props.channel);
         setLastVisited1(props.user,channel);
         props.selectChannel(channel);
@@ -72,7 +72,7 @@ const Private  = (props) => {
   
         <Menu.Item style={{fontSize : '17px'}}>
             <span>
-                <Icon name="exchange" />  Private
+                <Icon name="user secret" />  Private
             </span>
             <tb/>({prichannelsState.length})
         </Menu.Item>

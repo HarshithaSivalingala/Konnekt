@@ -12,7 +12,8 @@ const Channels = (props) => {
     const [modalopen, setModalOpen] = useState(false);
     const [channelAddState, setChannelAddState] = useState({ name: '', description: ''});
     const [isLoadingState, setLoadingState] = useState(false);
-    const [channelsState, setChannelsState] = useState([]);
+    const [pubchannelsState, setpubChannelsState] = useState([]);
+    const [prichannelsState, setpriChannelsState] = useState([]);
     const [privateOpen,privateSet] = useState(false);
 
     const channelsRef = firebase.database().ref("channels");
@@ -20,7 +21,7 @@ const Channels = (props) => {
 
     useEffect(() => {
         channelsRef.on('child_added', (snap) => {
-            setChannelsState((currentState) => {
+            setpubChannelsState((currentState) => {
                 let updatedState = [...currentState];
                 updatedState.push(snap.val());               
                 return updatedState;
@@ -31,10 +32,10 @@ const Channels = (props) => {
     }, [])
 
     useEffect(()=> {
-        if (channelsState.length > 0) {
-            props.selectChannel(channelsState[0])
+        if (pubchannelsState.length > 0) {
+            props.selectChannel(pubchannelsState[0])
         }
-    },[!props.channel ?channelsState : null ])
+    },[!props.channel ?pubchannelsState : null ])
 
     const openModal = () => {
         setModalOpenState(true);
@@ -61,8 +62,8 @@ const Channels = (props) => {
     }
 
     const displayChannels = () => {
-        if (channelsState.length > 0) {
-            return channelsState.map((channel) => {
+        if (pubchannelsState.length > 0) {
+            return pubchannelsState.map((channel) => {
                 return <Menu.Item
                     key={channel.id}
                     name={channel.name}
@@ -79,6 +80,7 @@ const Channels = (props) => {
     }
 
     const selectChannel = (channel) => {
+        prompt("trial prompt")
         setLastVisited(props.user,props.channel);
         setLastVisited(props.user,channel);
         props.selectChannel(channel);
@@ -134,11 +136,22 @@ const Channels = (props) => {
     }
 
     return <> <Menu.Menu style={{ marginTop: '35px' }}>
+            <Menu.Item style={{fontSize : '17px'}}>
+            <span>
+                <Icon name="user" />  Channel
+            </span>
+        </Menu.Item>
         <Menu.Item style={{fontSize : '17px'}}>
             <span>
-                <Icon name="exchange" /> Channels
+                <Icon name="exchange" />  Public
             </span>
-            ({channelsState.length})
+            <tb/>({pubchannelsState.length})
+        </Menu.Item>
+        <Menu.Item style={{fontSize : '17px'}}>
+            <span>
+                <Icon name="exchange" />  Private
+            </span>
+            <tb/>({prichannelsState.length})
         </Menu.Item>
         {displayChannels()}
         <Menu.Item>

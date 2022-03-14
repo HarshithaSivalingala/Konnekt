@@ -4,15 +4,25 @@ import 'firebase/storage';
 import 'firebase/database';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD3NPjPvyjNQsFRnQeGm3JxRH-J4_ds21Y",
-    authDomain: "slackclone-94ed8.firebaseapp.com",
-    projectId: "slackclone-94ed8",
-    databaseURL : "https://slackclone-94ed8-default-rtdb.asia-southeast1.firebasedatabase.app",
-    storageBucket: "slackclone-94ed8.appspot.com",
-    messagingSenderId: "172102310378",
-    appId: "1:172102310378:web:050a14d5a9cce84f81fa93",
-    measurementId: "G-Y7J8HPKJWE"
-  };
+
+  apiKey: "AIzaSyCJa44VefR-CCrNdaFBy8Jkx_2eW66AZUs",
+
+  authDomain: "konnect-eb4d8.firebaseapp.com",
+
+  databaseURL: "https://konnect-eb4d8-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+  projectId: "konnect-eb4d8",
+
+  storageBucket: "konnect-eb4d8.appspot.com",
+
+  messagingSenderId: "514347469885",
+
+  appId: "1:514347469885:web:f0bb116487d4d86f7eee54",
+
+  measurementId: "G-P3W88GFH71"
+
+};
+
 
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();

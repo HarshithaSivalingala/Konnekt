@@ -70,9 +70,9 @@ const Channels = (props) => {
                     onClick={() => selectChannel(channel)}
                     active={props.channel && channel.id === props.channel.id && !props.channel.isFavourite}
                 >
-                      <Notification user={props.user} channel={props.channel}
+                      {/* <Notification user={props.user} channel={props.channel}
                         notificationChannelId={channel.id}
-                        displayName= {"# " + channel.name} />
+                        displayName= {"# " + channel.name} /> */}
                    
                 </Menu.Item>
             })

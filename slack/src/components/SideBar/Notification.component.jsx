@@ -22,20 +22,20 @@ export const Notification = (props) => {
                 setChannelsVisitedState(snap.val());
             })
 
-            // messagesRef.on('value', snap => {
-            //     let messages = snap.val();
+            messagesRef.on('value', snap => {
+                let messages = snap.val();
 
-            //     let channelsId = Object.keys(messages);
-            //     let messagesTimeStamp = {};
-            //     channelsId.forEach((channelId) => {
-            //         let channelMessageKeys = Object.keys(messages[channelId]);
-            //         channelMessageKeys.reduce((agg, item) => {
-            //             messagesTimeStamp[channelId] = [...messagesTimeStamp[channelId] || []];
-            //             messagesTimeStamp[channelId].push(messages[channelId][item].timestamp);
-            //         })
-            //     })
-            //     setMessagesTimeStampState(messagesTimeStamp);
-            // })
+                let channelsId = Object.keys(messages);
+                let messagesTimeStamp = {};
+                channelsId.forEach((channelId) => {
+                    let channelMessageKeys = Object.keys(messages[channelId]);
+                    channelMessageKeys.reduce((agg, item) => {
+                        messagesTimeStamp[channelId] = [...messagesTimeStamp[channelId] || []];
+                        messagesTimeStamp[channelId].push(messages[channelId][item].timestamp);
+                    })
+                })
+                setMessagesTimeStampState(messagesTimeStamp);
+            })
         }
     }, [props.user]);
 

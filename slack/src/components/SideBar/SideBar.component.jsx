@@ -12,7 +12,7 @@ export const SideBar = () => {
         <UserInfo />
         {/* <FavouriteChannels /> */}
         <Channels />
-        {/* <PrivateChat /> */}
+        <PrivateChat />
     </Menu>
     )
 }

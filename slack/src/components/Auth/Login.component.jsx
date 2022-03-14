@@ -67,9 +67,9 @@ const Login = () => {
     return ( 
         <>
         
-    <Grid verticalAlign="middle" textAlign="center" className="grid-form" >
+    <Grid verticalAlign="middle" textAlign="center" className="grid-form">
     
-        <Grid.Column style={{ maxWidth: '500px' }}>
+        <Grid.Column style={{ maxWidth: '500px'}}>
             <Header icon as="h2">
             Login
             </Header>

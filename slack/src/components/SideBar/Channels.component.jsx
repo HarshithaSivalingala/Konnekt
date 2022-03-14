@@ -5,11 +5,12 @@ import { setChannel} from "../../store/actioncreator";
 import { Notification } from "./Notification.component";
 
 import './Channels.css';
-import { Menu, Icon, Modal, Button, Form, Segment } from 'semantic-ui-react';
+import { Menu, Icon, Modal, Button, Form, Segment} from 'semantic-ui-react';
 
 const Channels = (props) => {
     const [modalOpenState, setModalOpenState] = useState(false);
-    const [channelAddState, setChannelAddState] = useState({ name: '', description: '' });
+    const [modalopen, setModalOpen] = useState(false);
+    const [channelAddState, setChannelAddState] = useState({ name: '', description: ''});
     const [isLoadingState, setLoadingState] = useState(false);
     const [channelsState, setChannelsState] = useState([]);
 
@@ -36,6 +37,9 @@ const Channels = (props) => {
 
     const openModal = () => {
         setModalOpenState(true);
+    }
+    const openModal2 = () => {
+        setModalOpen(true);
     }
 
     const closeModal = () => {
@@ -125,9 +129,26 @@ const Channels = (props) => {
         </Menu.Item>
         {displayChannels()}
         <Menu.Item>
-            <span className="clickable" onClick={openModal} >
+            <span className="clickable" onClick={openModal2} >
                 <Icon name="add" /> ADD
             </span>
+        </Menu.Item>
+        <Menu.Item>
+        <Modal transparent={true} open={modalopen} onClose={closeModal}>
+            <Modal.Header>
+                Prompt part
+
+            </Modal.Header>
+            <Modal.Actions>
+                <Button loading={isLoadingState} onClick={onSubmit}>
+                    <Icon name="bullhorn" /> Public 
+                </Button>
+                <Button style={{float: 'left'}} onClick={closeModal}>
+                    <Icon name="user secret" /> Private
+                </Button>
+            </Modal.Actions>
+        </Modal>
+
         </Menu.Item>
     </Menu.Menu>
         <Modal open={modalOpenState} onClose={closeModal}>

@@ -9,3 +9,8 @@
 .ui.menu .item.active{
     background : #1164A3 !important;
 }
+
+.custom-Modal {
+width: 500px;
+height: 500px;
+}

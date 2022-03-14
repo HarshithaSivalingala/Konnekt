@@ -96,6 +96,8 @@ const Login = () => {
                     />
                 </Segment>
                 <Button disabled={isLoading} loading={isLoading}>Login</Button>
+                <br/>
+                <br/>
                 <Button circular color='facebook' icon='facebook' />
                 <Button circular color='twitter' icon='twitter' />
                 <Button circular color='linkedin' icon='linkedin' />

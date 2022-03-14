@@ -45,6 +45,9 @@ const Channels = (props) => {
     const closeModal = () => {
         setModalOpenState(false);
     }
+    const closeModal2 = () => {
+        setModalOpen(false);
+    }
 
     const checkIfFormValid = () => {
         return channelAddState && channelAddState.name && channelAddState.description;
@@ -136,12 +139,19 @@ const Channels = (props) => {
         <Menu.Item>
         <Modal size={'tiny'}open={modalopen} onClose={closeModal}>
             <Modal.Header>
-                Choose a new Workspace
+                Choose a new Workspace 
+
             </Modal.Header>
+            
             <Modal.Actions>
-                <Button loading={isLoadingState} onClick={onSubmit}>
+                <Button style={{float: 'left'}} loading={isLoadingState} onClick={openModal}>
                     <Icon name="bullhorn" /> Public 
                 </Button>
+                <Button loading={isLoadingState} onClick={closeModal2}>
+                    Close
+                </Button>
+
+                
                 <Button style={{float: 'left'}} onClick={closeModal}>
                     <Icon name="user secret" /> Private
                 </Button>

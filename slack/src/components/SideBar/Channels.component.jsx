@@ -13,6 +13,7 @@ const Channels = (props) => {
     const [channelAddState, setChannelAddState] = useState({ name: '', description: ''});
     const [isLoadingState, setLoadingState] = useState(false);
     const [channelsState, setChannelsState] = useState([]);
+    const [privateOpen,privateSet] = useState(false);
 
     const channelsRef = firebase.database().ref("channels");
     const usersRef = firebase.database().ref("users");
@@ -47,6 +48,12 @@ const Channels = (props) => {
     }
     const closeModal2 = () => {
         setModalOpen(false);
+    }
+    const Private = () => {
+        privateSet(true);
+    }
+    const closeModal3 = () => {
+        privateSet(false);
     }
 
     const checkIfFormValid = () => {
@@ -152,7 +159,7 @@ const Channels = (props) => {
                 </Button>
 
                 
-                <Button style={{float: 'left'}} onClick={closeModal}>
+                <Button style={{float: 'left'}} loading={isLoadingState} onClick={Private}>
                     <Icon name="user secret" /> Private
                 </Button>
             </Modal.Actions>
@@ -160,6 +167,53 @@ const Channels = (props) => {
 
         </Menu.Item>
     </Menu.Menu>
+        <Modal open={privateOpen} onClose={closeModal3}>
+            <Modal.Header>
+                Create private channel
+            </Modal.Header>
+            <Modal.Content>
+                <Form onSubmit={onSubmit}>
+                    <Segment stacked>
+                        <Form.Input
+                            name="name"
+                            value={channelAddState.name}
+                            onChange={handleInput}
+                            type="text"
+                            placeholder="Enter Channel Name"
+                        />
+                        <Form.Input
+                            name="description"
+                            value={channelAddState.description}
+                            onChange={handleInput}
+                            type="text"
+                            placeholder="Enter Channel Description"
+                        />
+                        <Form.Input
+                            name="password"
+                            value={channelAddState.password}
+                            onChange={handleInput}
+                            type="password"
+                            placeholder="Create Password"
+                        />
+                        <Form.Input
+                            name="confirmpassword"
+                            value={channelAddState.confirmpassword}
+                            onChange={handleInput}
+                            type="password"
+                            placeholder="Confirm Password"
+                        />
+                    </Segment>
+                </Form>
+            </Modal.Content>
+            <Modal.Actions>
+                <Button loading={isLoadingState} onClick={onSubmit}>
+                    <Icon name="checkmark" /> Save
+                </Button>
+                <Button onClick={closeModal3}>
+                    <Icon name="remove" /> Cancel
+                </Button>
+            </Modal.Actions>
+        </Modal>
         <Modal open={modalOpenState} onClose={closeModal}>
             <Modal.Header>
                 Create Channel

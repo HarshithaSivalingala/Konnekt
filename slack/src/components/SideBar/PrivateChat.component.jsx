@@ -80,9 +80,9 @@ const PrivateChat = (props) => {
                     >
                      <Icon name="circle" color={`${connectedUsersState.indexOf(user.id) !== -1 ? "green" : "red"}`} /> 
 
-                     {/* <Notification user={props.user} channel={props.channel}
+                      <Notification user={props.user} channel={props.channel}
                         notificationChannelId={generateChannelId(user.id)}
-                        displayName={"@ " + user.name} /> */}
+                        displayName={"@ " + user.name} /> 
                         
                 </Menu.Item>
             })

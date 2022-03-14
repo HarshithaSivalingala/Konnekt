@@ -119,6 +119,9 @@ const Channels = (props) => {
                       <Notification user={props.user} channel={props.channel}
                         notificationChannelId={channel.id}
                         displayName= {"$ " + channel.name} />
+                     <Notification user={props.user} channel={props.channel}
+                        notificationChannelId={channel.id}
+                        displayName= {"# " + channel.name} /> 
                    
                 </Menu.Item>
             })

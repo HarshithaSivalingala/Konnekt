@@ -121,8 +121,8 @@ const Register = () => {
 
     return (<Grid verticalAlign="middle" textAlign="center" className="grid-form" >
         <Grid.Column style={{ maxWidth: '500px' }}>
-            <Header icon as="h2">
-                <Icon name="slack" />
+            <Header icon as="h2" color = "teal">
+                <Icon name="user plus" />
                 Register
             </Header>
             <Form onSubmit={onSubmit}>

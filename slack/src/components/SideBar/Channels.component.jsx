@@ -134,10 +134,9 @@ const Channels = (props) => {
             </span>
         </Menu.Item>
         <Menu.Item>
-        <Modal transparent={true} open={modalopen} onClose={closeModal}>
+        <Modal size={'tiny'}open={modalopen} onClose={closeModal}>
             <Modal.Header>
-                Prompt part
-
+                Choose a new Workspace
             </Modal.Header>
             <Modal.Actions>
                 <Button loading={isLoadingState} onClick={onSubmit}>

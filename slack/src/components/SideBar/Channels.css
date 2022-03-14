@@ -10,7 +10,9 @@
     background : #1164A3 !important;
 }
 
-.custom-Modal {
-width: 500px;
-height: 500px;
-}
+.modal-content {
+    height: 500px;
+  }
+.modal-container{
+    height: 24.37500rem;
+  }

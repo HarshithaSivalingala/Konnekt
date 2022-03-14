@@ -36,6 +36,7 @@ const PrivateChat = (props) => {
         connectedRef.on("value", snap => {
             if (props.user && snap.val()) {
                 const userStatusRef = statusRef.child(props.user.uid);
+                
                 userStatusRef.set(true);
                 userStatusRef.onDisconnect().remove();
             }
@@ -70,18 +71,19 @@ const PrivateChat = (props) => {
     const displayUsers = () => {
         if (usersState.length > 0) {
             return usersState.filter((user) => user.id !== props.user.uid).map((user) => {
+                // console.log(props.user.uid);
                 return <Menu.Item
                     key={user.id}
                     name={user.name}
                     onClick={() => selectUser(user)}
                     active={props.channel && generateChannelId(user.id) === props.channel.id}
-                >
-                    {/* <Icon name="circle" color={`${connectedUsersState.indexOf(user.id) !== -1 ? "green" : "red"}`} /> */}
+                    >
+                     <Icon name="circle" color={`${connectedUsersState.indexOf(user.id) !== -1 ? "green" : "red"}`} /> 
 
-                    {/* <Notification user={props.user} channel={props.channel}
+                     <Notification user={props.user} channel={props.channel}
                         notificationChannelId={generateChannelId(user.id)}
                         displayName={"@ " + user.name} />
-                         */}
+                        
                 </Menu.Item>
             })
         }

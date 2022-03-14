@@ -1,10 +1,15 @@
 
 .grid-form {
     padding: 1rem;
+<<<<<<< HEAD
+    height: 100vh;
+    background-image: url("../../background_konnect.png");
+=======
     height: 102vh;
     width: 330vh;
     /* background: #eee; */
     background-image: url("../../bgi.jpeg");
+>>>>>>> d6fb439ccea81a3c0a62fcbe65ab0a34c86a7c81
     background-repeat: no-repeat;
     background-size: 50cm;
     

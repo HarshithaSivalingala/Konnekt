@@ -143,8 +143,8 @@ const Private  = (props) => {
     return <> <Menu.Menu style={{ marginTop: '35px' }}>
   
         <Menu.Item style={{fontSize : '17px'}}>
-            <span>
-                <Icon name="user secret" />  Private
+            <span className="clickable">
+                <p> <Icon name="user secret" />  Private </p>
             </span>
             <tb/>({prichannelsState.length})
         </Menu.Item>

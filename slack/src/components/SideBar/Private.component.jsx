@@ -9,7 +9,16 @@ import { Menu, Icon} from 'semantic-ui-react';
 
 const Private  = (props) => {
     const [prichannelsState, setpriChannelsState] = useState([]);
-    
+    const [modalopen1, setModalOpen1] = useState(false);
+    const [modalOpenState1, setModalOpenState1] = useState(false);
+    const [privateOpen,privateSet] = useState(false);
+    const [modalopen, setModalOpen] = useState(false);
+    const [channelAddState, setChannelAddState] = useState({ name: '', description: '', password: ''});
+    const [isLoadingState, setLoadingState] = useState(false);
+    // const [channelAddState, setChannelAddState] = useState({ name: '', description: '', password: ''});
+    // console.log(channelAddState.password)
+    // console.log(channelAddState.name)
+
 
     const channels = firebase.database().ref("prichannels");
     const users = firebase.database().ref("users");
@@ -52,13 +61,75 @@ const Private  = (props) => {
             })
         }
     }
+    const closeModalPrivate = () => {
+        setModalOpenState1(false);
+          
+    }
+    const checkIfFormValid = () => {
+        return channelAddState && channelAddState.name && channelAddState.description && channelAddState.password;
+    }
 
     const selectChannel1 = (channel) => {
-        prompt("password")
-        setLastVisited1(props.user,props.channel);
-        setLastVisited1(props.user,channel);
-        props.selectChannel(channel);
+        var pwd = window.prompt("Enter the Passcode");
+
+        if (pwd === channel.password) {
+            alert("Alert!!!!!!!!")
+            setLastVisited1(props.user,props.channel);
+            setLastVisited1(props.user,channel);
+            props.selectChannel(channel);
+        
+        }
+        else if ((pwd!== channel.password) && (pwd != null) ){
+            alert("Wrong Password")
+        }
+
+        // setLastVisited1(props.user,props.channel);
+        // setLastVisited1(props.user,channel);
+        // props.selectChannel(channel);
+        
+
     }
+     const onSubmit1 = () => {
+        setModalOpen1(false);
+        privateSet(false);
+        setModalOpen(false);
+
+        
+
+        if (!checkIfFormValid()) {
+            return;
+        }
+
+        const key = channels.push().key;
+
+        const channel = {
+            id: key,
+            name: channelAddState.name,
+            description: channelAddState.description,
+            password: channelAddState.password,
+            created_by: {
+                name: props.user.displayName,
+                avatar: props.user.photoURL
+            }
+        }
+        console.log(channel.password)
+
+        setLoadingState(true);
+        channels.child(key)
+            .update(channel)
+            .then(() => {
+                setChannelAddState({ name: '', description: '' , password: ''});
+                setLoadingState(false);
+                closeModalPrivate();
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+
+    
+    
 
     const setLastVisited1 = (user, channel) => {
         const lastVisited = users.child(user.uid).child("lastVisited").child(channel.id);

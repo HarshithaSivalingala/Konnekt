@@ -228,21 +228,21 @@ const Channels = (props) => {
                             value={channelAddState.description}
                             onChange={handleInput}
                             type="text"
-                            placeholder="User Id"
+                            placeholder="User ID"
                         />
                         <Form.Input
                             name="password"
                             value={channelAddState.password}
                             onChange={handleInput}
                             type="password"
-                            placeholder="User Password"
+                            placeholder="Room Code"
                         />
                         <Form.Input
                             name="confirmpassword"
                             value={channelAddState.confirmpassword}
                             onChange={handleInput}
                             type="password"
-                            placeholder="Confirm Password"
+                            placeholder="Confirm Room Code"
                         />
                     </Segment>
                 </Form>

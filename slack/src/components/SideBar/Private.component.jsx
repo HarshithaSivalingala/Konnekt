@@ -5,7 +5,7 @@ import { setChannel} from "../../store/actioncreator";
 import { Notification } from "./Notification.component";
 
 import './Channels.css';
-import { Menu, Icon} from 'semantic-ui-react';
+import { Menu, Icon, Modal, Form} from 'semantic-ui-react';
 
 const Private  = (props) => {
     const [prichannelsState, setpriChannelsState] = useState([]);
@@ -44,6 +44,9 @@ const Private  = (props) => {
 
 
 
+
+
+
     const displayChannels = () => {
         if (prichannelsState.length > 0) {
             return prichannelsState.map((channel) => {
@@ -68,25 +71,23 @@ const Private  = (props) => {
     const checkIfFormValid = () => {
         return channelAddState && channelAddState.name && channelAddState.description && channelAddState.password;
     }
+  
 
+  
     const selectChannel1 = (channel) => {
-        var pwd = window.prompt("Enter the Passcode");
+         var pwd = window.prompt("Enter the Room Code");
+        
 
         if (pwd === channel.password) {
-            alert("Alert!!!!!!!!")
             setLastVisited1(props.user,props.channel);
             setLastVisited1(props.user,channel);
             props.selectChannel(channel);
         
         }
-        else if ((pwd!== channel.password) && (pwd != null) ){
+        else if ((pwd !== channel.password) && (pwd != null) ){
             alert("Wrong Password")
         }
 
-        // setLastVisited1(props.user,props.channel);
-        // setLastVisited1(props.user,channel);
-        // props.selectChannel(channel);
-        
 
     }
      const onSubmit1 = () => {

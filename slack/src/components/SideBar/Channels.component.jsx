@@ -3,21 +3,29 @@ import { connect } from 'react-redux';
 import firebase from "firebase";
 import { setChannel} from "../../store/actioncreator";
 import { Notification } from "./Notification.component";
-
+import onSubmit1 from "./Private.component";
 import './Channels.css';
 import { Menu, Icon, Modal, Button, Form, Segment} from 'semantic-ui-react';
 
 const Channels = (props) => {
     const [modalOpenState, setModalOpenState] = useState(false);
+    const [modalOpenState1, setModalOpenState1] = useState(false);
+    const [modalopen1, setModalOpen1] = useState(false);
     const [modalopen, setModalOpen] = useState(false);
-    const [channelAddState, setChannelAddState] = useState({ name: '', description: ''});
+    const [channelAddState, setChannelAddState] = useState({ name: '', description: '', password: ''});
     const [isLoadingState, setLoadingState] = useState(false);
     const [pubchannelsState, setpubChannelsState] = useState([]);
-    const [prichannelsState, setpriChannelsState] = useState([]);
     const [privateOpen,privateSet] = useState(false);
+    const [prichannelsState, setpriChannelsState] = useState([]);
 
-    const channelsRef = firebase.database().ref("channels");
+    
+
+    const channelsRef = firebase.database().ref("pubchannels");
     const usersRef = firebase.database().ref("users");
+
+    const channels = firebase.database().ref("prichannels");
+    const users = firebase.database().ref("users");
+
 
     useEffect(() => {
         channelsRef.on('child_added', (snap) => {
@@ -37,6 +45,33 @@ const Channels = (props) => {
         }
     },[!props.channel ?pubchannelsState : null ])
 
+    useEffect(() => {
+        channels.on('child_added', (snapshot) => {
+            setpriChannelsState((currentState) => {
+                let updatedState = [...currentState];
+                updatedState.push(snapshot.val());               
+                return updatedState;
+            })
+        });
+
+        return () => channels.off();
+    }, [])
+
+    useEffect(()=> {
+        if (prichannelsState.length > 0) {
+            props.selectChannel(prichannelsState[0])
+        }
+    },[!props.channel ?prichannelsState : null ])
+
+    const openModalPrivate = () => {
+        setModalOpenState1(true);
+    }
+
+    const closeModalPrivate = () => {
+        setModalOpenState1(false);
+          
+    }
+
     const openModal = () => {
         setModalOpenState(true);
     }
@@ -50,15 +85,9 @@ const Channels = (props) => {
     const closeModal2 = () => {
         setModalOpen(false);
     }
-    const Private = () => {
-        privateSet(true);
-    }
-    const closeModal3 = () => {
-        privateSet(false);
-    }
 
     const checkIfFormValid = () => {
-        return channelAddState && channelAddState.name && channelAddState.description;
+        return channelAddState && channelAddState.name && channelAddState.description && channelAddState.password;
     }
 
     const displayChannels = () => {
@@ -70,17 +99,18 @@ const Channels = (props) => {
                     onClick={() => selectChannel(channel)}
                     active={props.channel && channel.id === props.channel.id && !props.channel.isFavourite}
                 >
-                     <Notification user={props.user} channel={props.channel}
+                      <Notification user={props.user} channel={props.channel}
                         notificationChannelId={channel.id}
-                        displayName= {"# " + channel.name} /> 
+                        displayName= {"# " + channel.name} />
                    
                 </Menu.Item>
             })
         }
-    }
+ 
+        }
+    
 
     const selectChannel = (channel) => {
-        prompt("trial prompt")
         setLastVisited(props.user,props.channel);
         setLastVisited(props.user,channel);
         props.selectChannel(channel);
@@ -92,13 +122,17 @@ const Channels = (props) => {
         lastVisited.onDisconnect().set(firebase.database.ServerValue.TIMESTAMP);
     }
 
+   
+ 
+
     const onSubmit = () => {
         setModalOpen(false);
         privateSet(false);
         
+       
 
         if (!checkIfFormValid()) {
-            return;
+            return false;
         }
 
         const key = channelsRef.push().key;
@@ -125,6 +159,8 @@ const Channels = (props) => {
             })
     }
 
+    
+
     const handleInput = (e) => {
 
         let target = e.target;
@@ -136,34 +172,24 @@ const Channels = (props) => {
     }
 
     return <> <Menu.Menu style={{ marginTop: '35px' }}>
-            <Menu.Item style={{fontSize : '17px'}}>
-            <span>
-                <Icon name="user" />  Channel
+        <Menu.Item>
+            <span className="clickable" onClick={openModal2} >
+                <Icon name="add" /> ADD CHANNEL
             </span>
         </Menu.Item>
+        <selectChannel1/>
+        <br></br>  
         <Menu.Item style={{fontSize : '17px'}}>
             <span>
-                <Icon name="exchange" />  Public
+                <Icon name="bullhorn" />  Public
             </span>
             <tb/>({pubchannelsState.length})
         </Menu.Item>
-        <Menu.Item style={{fontSize : '17px'}}>
-            <span>
-                <Icon name="exchange" />  Private
-            </span>
-            <tb/>({prichannelsState.length})
-        </Menu.Item>
         {displayChannels()}
-        <Menu.Item>
-            <span className="clickable" onClick={openModal2} >
-                <Icon name="add" /> ADD
-            </span>
-        </Menu.Item>
         <Menu.Item>
         <Modal size={'tiny'}open={modalopen} onClose={closeModal}>
             <Modal.Header>
                 Choose a new Workspace 
-
             </Modal.Header>
             
             <Modal.Actions>
@@ -175,17 +201,17 @@ const Channels = (props) => {
                 </Button>
 
                 
-                <Button style={{float: 'left'}} loading={isLoadingState} onClick={Private}>
+                <Button style={{float: 'left'}} loading={isLoadingState} onClick={openModalPrivate}>
                     <Icon name="user secret" /> Private
                 </Button>
             </Modal.Actions>
         </Modal>
-
         </Menu.Item>
     </Menu.Menu>
-        <Modal open={privateOpen} onClose={closeModal3}>
+    
+    <Modal open={modalOpenState1} onClose={closeModalPrivate}>
             <Modal.Header>
-                Create private channel
+                Create Private Channel
             </Modal.Header>
             <Modal.Content>
                 <Form onSubmit={onSubmit}>
@@ -202,34 +228,35 @@ const Channels = (props) => {
                             value={channelAddState.description}
                             onChange={handleInput}
                             type="text"
-                            placeholder="Enter Channel Description"
+                            placeholder="User ID"
                         />
                         <Form.Input
                             name="password"
                             value={channelAddState.password}
                             onChange={handleInput}
                             type="password"
-                            placeholder="Create Password"
+                            placeholder="Room Code"
                         />
                         <Form.Input
                             name="confirmpassword"
                             value={channelAddState.confirmpassword}
                             onChange={handleInput}
                             type="password"
-                            placeholder="Confirm Password"
+                            placeholder="Confirm Room Code"
                         />
                     </Segment>
                 </Form>
             </Modal.Content>
             <Modal.Actions>
-                <Button loading={isLoadingState} onClick={onSubmit}>
+                <Button loading={isLoadingState} onClick={onSubmit1}>
                     <Icon name="checkmark" /> Save
                 </Button>
-                <Button onClick={closeModal3}>
+                <Button onClick={closeModalPrivate}>
                     <Icon name="remove" /> Cancel
                 </Button>
             </Modal.Actions>
         </Modal>
+        
         <Modal open={modalOpenState} onClose={closeModal}>
             <Modal.Header>
                 Create Channel

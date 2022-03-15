@@ -6,12 +6,14 @@ import PrivateChat from "./PrivateChat.component";
 import FavouriteChannels from "./FavouriteChannels.component";
 
 import "./SideBar.css";
+import PrivateComponent from './Private.component';
 
 export const SideBar = () => {
     return (<Menu vertical fixed="left" borderless size="large" className="side_bar">
         <UserInfo />
         <FavouriteChannels />
         <Channels />
+        <PrivateComponent/>
         <PrivateChat />
     </Menu>
     )

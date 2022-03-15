@@ -119,14 +119,19 @@ const Register = () => {
         return errorState.map((error, index) => <p key={index}>{error.message}</p>)
     }
 
-    return (<Grid verticalAlign="middle" textAlign="center" className="grid-form" >
-        <Grid.Column style={{ maxWidth: '500px' }}>
+    return (
+        <>
+               <div class = "container">
+  <h1>KONNEKT</h1>
+</div>
+    <Grid verticalAlign="middle" textAlign="center" className="grid-form-r" >
+        <Grid.Column style={{ maxWidth: '380px' ,maxHeight:'400px'}}>
             <Header icon as="h2" color = "teal">
                 <Icon name="user plus" />
                 Register
             </Header>
             <Form onSubmit={onSubmit}>
-                <Segment stacked>
+                <Segment stacked> 
                     <Form.Input
                         name="userName"
                         value={userState.userName}
@@ -179,7 +184,9 @@ const Register = () => {
                 Already have an account? <Link to="/login" >Login Here</Link>
             </Message>
         </Grid.Column>
-    </Grid>)
+    </Grid>
+    </>
+    )
 }
 
 export default Register;

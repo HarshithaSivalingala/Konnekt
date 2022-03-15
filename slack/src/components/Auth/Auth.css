@@ -1,11 +1,94 @@
 
-.grid-form {
+.grid-form-l {
     padding: 1rem;
-    height: 102vh;
+    height: 108vh;
     width: 330vh;
     /* background: #eee; */
-    background-image: url("../../bgi.jpeg");
-    background-repeat: no-repeat;
-    background-size: 50cm;
+     background: url("../../bg.png");  
+    background-repeat: no-repeat; 
+     background-size:38cm;
+  
+     /* background-image:linear-gradient(rgb(226, 138, 210),rgb(115, 115, 221)) */
+     
     
+}
+
+.grid-form-r {
+  padding: 1rem;
+  height: 103vh;
+  width: 330vh;
+  /* background: #eee; */
+   background-image: url("../../bg.png");  
+  background-repeat: no-repeat;
+  background-size: 38cm;
+ 
+   /* background-image:linear-gradient(rgb(226, 138, 210),rgb(115, 115, 221)) */
+
+  
+}
+
+.container{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.container h1 {
+  position:absolute;
+  opacity: 0;
+  font-family: "Work Sans", sans-serif;
+  margin: 0% auto auto auto;
+  background: linear-gradient(to right, #183038, #381332, #131314);
+  font-weight: 800;
+  font-size: 100px;
+  bottom:6%; 
+  left:6%;
+  width: 600px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  overflow: hidden;
+  animation: shring-animation 4.2s steps(30,start) 1s forwards infinite , blink .5s infinite;
+}
+
+@keyframes shring-animation {
+  0% {
+    background-position: 0 0;
+    opacity: 0;
+    width: 0;
+  }
+  1% {
+    background-position: 0 0;
+    opacity: 1;
+    border-right: 1px solid rgb(20, 17, 10);
+  }
+  50% {
+    background-position: 150px 0;
+    opacity: 1;
+    border-right: 1px solid rgb(3, 3, 3);
+  }
+  100% {
+    background-position: 400px 0;
+    opacity: 1;
+    border-right: 1px solid rgb(14, 13, 12);
+  }
+}
+
+@keyframes type {
+  0% {
+    width: 0;
+  }
+  1%, 99%{
+    border-right: 1px solid rgb(14, 13, 13);
+  }
+  100%{
+    border-right: none;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
 }

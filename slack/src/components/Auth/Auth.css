@@ -1,55 +1,53 @@
 
+.forms {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 .grid-form-l {
-    padding: 1rem;
-    height: 108vh;
-    width: 330vh;
-    /* background: #eee; */
-     background: url("../../bg.png");  
-    background-repeat: no-repeat; 
-     background-size:38cm;
-  
-     /* background-image:linear-gradient(rgb(226, 138, 210),rgb(115, 115, 221)) */
-     
-    
+  height: 100vh;
+  width: 50%;
+
+  /* background: #eee; */
+
+  /* background-image:linear-gradient(rgb(226, 138, 210),rgb(115, 115, 221)) */
 }
 
 .grid-form-r {
-  padding: 1rem;
-  height: 103vh;
-  width: 330vh;
-  /* background: #eee; */
-   background-image: url("../../bg.png");  
-  background-repeat: no-repeat;
-  background-size: 38cm;
- 
-   /* background-image:linear-gradient(rgb(226, 138, 210),rgb(115, 115, 221)) */
+  height: 100vh;
+  width: 50%;
 
-  
+  /* background-image:linear-gradient(rgb(226, 138, 210),rgb(115, 115, 221)) */
 }
 
-.container{
+.container {
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  margin-top: 100px;
+  height: 100vh;
+  position: fixed;
+  background: url('../../bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .container h1 {
-  position:absolute;
+  position: absolute;
   opacity: 0;
-  font-family: "Work Sans", sans-serif;
-  margin: 0% auto auto auto;
+  font-family: 'Work Sans', sans-serif;
+  margin: 0%;
   background: linear-gradient(to right, #183038, #381332, #131314);
   font-weight: 800;
   font-size: 100px;
-  bottom:6%; 
-  left:6%;
+  bottom: 6%;
+  left: 6%;
   width: 600px;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   overflow: hidden;
-  animation: shring-animation 4.2s steps(30,start) 1s forwards infinite , blink .5s infinite;
+  animation: shring-animation 4.2s steps(30, start) 1s forwards infinite,
+    blink 0.5s infinite;
 }
 
 @keyframes shring-animation {
@@ -79,10 +77,11 @@
   0% {
     width: 0;
   }
-  1%, 99%{
+  1%,
+  99% {
     border-right: 1px solid rgb(14, 13, 13);
   }
-  100%{
+  100% {
     border-right: none;
   }
 }

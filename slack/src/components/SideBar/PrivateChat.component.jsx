@@ -70,7 +70,7 @@ const PrivateChat = (props) => {
 
     const displayUsers = () => {
         if (usersState.length > 0) {
-            return usersState.filter((user) => user.id !== props.user.uid).map((user) => {
+            return usersState.filter((user) => user.id !== props ?.user ?.uid).map((user) => {
                 // console.log(props.user.uid);
                 return <Menu.Item
                     key={user.id}
@@ -104,11 +104,11 @@ const PrivateChat = (props) => {
     }
 
     const generateChannelId = (userId) => {
-        if (props.user.uid < userId) {
-            return props.user.uid + userId;
+        if (props ?.user ?.uid < userId) {
+            return props ?.user ?.uid + userId;
         }
         else {
-            return userId + props.user.uid;
+            return userId + props ?.user ?.uid;
         }
     }
 

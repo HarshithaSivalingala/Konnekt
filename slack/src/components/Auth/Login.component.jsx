@@ -13,6 +13,7 @@ import logo from '../../konnect-logo.png'
 import firebase from 'firebase'
 import './Login.css'
 import './Auth.css'
+import video from './vi.mp4'
 
 
 const Login = () => {
@@ -74,11 +75,14 @@ const Login = () => {
 
   return (
     <>
+  
+
    
       <div class='container'>
-   
+      <video autoPlay loop muted id="video" className='video'>
+      <source src={video} type= 'video/mp4'/>
+      </video>
         <h1>KONNEKT</h1>
-       
       </div>
       <div className='forms'>
         <Grid verticalAlign='middle' textAlign='center' className='grid-form-l'>
@@ -131,6 +135,7 @@ const Login = () => {
         </Grid>
         
       </div>
+      
     </>
   )
 }

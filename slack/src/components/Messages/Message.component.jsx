@@ -113,6 +113,7 @@ const Messages = (props) => {
     }
 
     return <div className="messages"><MessageHeader starChange={starChange} starred={isStarred()} isPrivateChat={props.channel?.isPrivateChat} searchTermChange={searchTermChange} channelName={props.channel?.name} uniqueUsers={uniqueusersCount()} />
+      
         
         <Segment className="messagecontent">
             <Comment.Group>
@@ -121,6 +122,7 @@ const Messages = (props) => {
             </Comment.Group>
         </Segment>
         <MessageInput /></div>
+     
         
 }
 

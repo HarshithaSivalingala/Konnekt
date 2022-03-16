@@ -6,7 +6,7 @@ import { Notification } from "./Notification.component";
 import onSubmit1 from "./Private.component";
 import './Channels.css';
 import { Menu, Icon, Modal, Button, Form, Segment, TransitionablePortal, event} from 'semantic-ui-react';
-
+import {Public} from '@material-ui/icons'
 
 const Channels = (props) => {
     const [modalOpenState, setModalOpenState] = useState(false);
@@ -172,23 +172,23 @@ const Channels = (props) => {
         })
     }
 
-    return <> 
-    <div>
-
+    return (
+    <>
+    {' '}
     
     <Menu.Menu style={{ marginTop: '35px' }}>
         <Menu.Item>
-            <span className="clickable" onClick={openModal2} >
+            <span className="clickable mains" onClick={openModal2} >
                 <p><Icon name="add" />ADD CHANNEL</p>
             </span>
         </Menu.Item>
         <selectChannel1/>
         <br></br>  
         <Menu.Item style={{fontSize : '17px'}}>
-            <span className="clickable">
-                <p><Icon name="bullhorn"/>Public</p>
+            <span className="mains">
+              <Public fontsize='large'/>
+                <span> Public({pubchannelsState.length})</span>{' '}
             </span>
-            <tb/>({pubchannelsState.length})
         </Menu.Item>
         {displayChannels()}
         <Menu.Item>
@@ -198,7 +198,8 @@ const Channels = (props) => {
           transition={{ animation: 'scale', duration: 500 }}
         >
         <Modal size={'tiny'}open={modalopen} onOpen={() => setTimeout(() => document.body.classList.add('modal-fade-in'), 0)}
-          transition={{ animation: 'scale', duration: 500 }} onClose= {closeModal}>
+          transition={{ animation: 'scale', duration: 500}} 
+          onClose={() => setTimeout(() => document.body.classList.add('modal-fade-in'), 0)} close={closeModal}>
             <Modal.Header>
                 Choose a new Workspace 
             </Modal.Header>
@@ -214,11 +215,18 @@ const Channels = (props) => {
                         <Icon name="user secret" /> Private  
                 </Button>
             </Modal.Actions>
+            
         </Modal>
         </TransitionablePortal>
+        
         </Menu.Item>
         
     </Menu.Menu>
+    <TransitionablePortal
+          open={modalOpenState1}
+          onOpen={() => setTimeout(() => document.body.classList.add('modal-fade-in'), 0)}
+          transition={{ animation: 'scale', duration: 500 }}
+        >
     
     <Modal open={modalOpenState1} onClose={closeModalPrivate}>
             <Modal.Header>
@@ -266,8 +274,15 @@ const Channels = (props) => {
                     <Icon name="remove" /> Cancel
                 </Button>
             </Modal.Actions>
+            
         </Modal>
+        </TransitionablePortal>
         
+        <TransitionablePortal
+          open={modalOpenState}
+          onOpen={() => setTimeout(() => document.body.classList.add('modal-fade-in'), 0)}
+          transition={{ animation: 'scale', duration: 500 }}
+        >
         <Modal open={modalOpenState} onClose={closeModal}>
             <Modal.Header>
                 Create Public Channel
@@ -300,9 +315,13 @@ const Channels = (props) => {
                     <Icon name="remove" /> Cancel
                 </Button>
             </Modal.Actions>
+           
         </Modal>
-        </div>
+    
+        </TransitionablePortal>
+        
     </>
+    )
 }
 
 const mapStateToProps = (state) => {

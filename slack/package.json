@@ -9,6 +9,10 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "emoji-mart": "^3.0.1",
+<<<<<<< HEAD
+=======
+    "emoji-picker-react": "^3.5.1",
+>>>>>>> 523e47bedce713e7dfd803e55736c7ff420a81aa
     "firebase": "^7.19.0",
     "javascript-time-ago": "^2.3.13",
     "mime-type": "^4.0.0",

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Segment, Input, Button } from "semantic-ui-react";
+import { Segment, Input, Button, TextArea } from "semantic-ui-react";
 import firebase from "firebase";
 import { connect } from "react-redux";
 import { ImageUpload } from "./ImageUpload.component"
 // import uuidv4 from "uuid/v4";
 import { v4 as uuidv4 } from 'uuid'
+import {Picker} from 'emoji-mart';
+import "emoji-mart/css/emoji-mart.css";
 
 const MessageInput = (props) => {
 
@@ -15,6 +17,7 @@ const MessageInput = (props) => {
     const [messageState, setMessageState] = useState("");
 
     const [fileDialogState, setFileDialog] = useState(false);
+    const [showEmojis, setShowEmojis] = useState(false);
 
     const createMessageInfo = (downloadUrl) => {
         return {
@@ -39,17 +42,23 @@ const MessageInput = (props) => {
         }
     }
 
-    const onMessageChange = (e) => {
-        const target = e.target;
-        setMessageState(target.value);
+    const addEmoji = (e) => {
+        let sym = e.unified.split("-");
+        let codeArray = [];
+        sym.forEach((el) => codeArray.push("0x" + el));
+        let emoji = String.fromCodePoint(...codeArray);
+        
+        setMessageState(messageState + emoji);
+       
     }
-
     const createActionButtons = () => {
         return <>
             <Button icon="send" onClick={() => {sendMessage() }} />
             <Button icon="upload" onClick={() => setFileDialog(true)} />
+            <Button icon="smile outline" onClick={() => {setShowEmojis(!showEmojis) }} />
         </>
     }
+
 
     const uploadImage = (file, contentType) => {
 
@@ -66,17 +75,21 @@ const MessageInput = (props) => {
             .catch((err) => console.log(err));
     }
 
-    return <Segment>
+    return (<Segment>
         <Input
-            onChange={onMessageChange}
+            onChange={(e) => setMessageState(e.target.value)}
             fluid={true}
             name="message"
             value={messageState}
             label={createActionButtons()}
             labelPosition="right"
         />
+        {showEmojis && (
+            <div><Picker onSelect={addEmoji}/></div>
+        )}
         <ImageUpload uploadImage={uploadImage} open={fileDialogState} onClose={() => setFileDialog(false)} />
     </Segment>
+    )
 }
 
 const mapStateToProps = (state) => {

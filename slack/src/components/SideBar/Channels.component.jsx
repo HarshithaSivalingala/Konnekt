@@ -6,7 +6,7 @@ import { Notification } from "./Notification.component";
 import onSubmit1 from "./Private.component";
 import './Channels.css';
 import { Menu, Icon, Modal, Button, Form, Segment, TransitionablePortal, event} from 'semantic-ui-react';
-
+import {Public} from '@material-ui/icons'
 
 const Channels = (props) => {
     const [modalOpenState, setModalOpenState] = useState(false);
@@ -172,23 +172,23 @@ const Channels = (props) => {
         })
     }
 
-    return <> 
-    <div>
-
+    return (
+    <>
+    {' '}
     
     <Menu.Menu style={{ marginTop: '35px' }}>
         <Menu.Item>
-            <span className="clickable" onClick={openModal2} >
+            <span className="clickable mains" onClick={openModal2} >
                 <p><Icon name="add" />ADD CHANNEL</p>
             </span>
         </Menu.Item>
         <selectChannel1/>
         <br></br>  
         <Menu.Item style={{fontSize : '17px'}}>
-            <span className="clickable">
-                <p><Icon name="bullhorn"/>Public</p>
+            <span className="mains">
+              <Public fontsize='large'/>
+                <span> Public({pubchannelsState.length})</span>{' '}
             </span>
-            <tb/>({pubchannelsState.length})
         </Menu.Item>
         {displayChannels()}
         <Menu.Item>
@@ -317,9 +317,11 @@ const Channels = (props) => {
             </Modal.Actions>
            
         </Modal>
+    
         </TransitionablePortal>
-        </div>
+        
     </>
+    )
 }
 
 const mapStateToProps = (state) => {

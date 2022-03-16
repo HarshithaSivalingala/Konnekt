@@ -198,7 +198,8 @@ const Channels = (props) => {
           transition={{ animation: 'scale', duration: 500 }}
         >
         <Modal size={'tiny'}open={modalopen} onOpen={() => setTimeout(() => document.body.classList.add('modal-fade-in'), 0)}
-          transition={{ animation: 'scale', duration: 500}} onClose= {closeModal}>
+          transition={{ animation: 'scale', duration: 500}} 
+          onClose={() => setTimeout(() => document.body.classList.add('modal-fade-in'), 0)} close={closeModal}>
             <Modal.Header>
                 Choose a new Workspace 
             </Modal.Header>
@@ -214,11 +215,18 @@ const Channels = (props) => {
                         <Icon name="user secret" /> Private  
                 </Button>
             </Modal.Actions>
+            
         </Modal>
         </TransitionablePortal>
+        
         </Menu.Item>
         
     </Menu.Menu>
+    <TransitionablePortal
+          open={modalOpenState1}
+          onOpen={() => setTimeout(() => document.body.classList.add('modal-fade-in'), 0)}
+          transition={{ animation: 'scale', duration: 500 }}
+        >
     
     <Modal open={modalOpenState1} onClose={closeModalPrivate}>
             <Modal.Header>
@@ -266,8 +274,15 @@ const Channels = (props) => {
                     <Icon name="remove" /> Cancel
                 </Button>
             </Modal.Actions>
+            
         </Modal>
+        </TransitionablePortal>
         
+        <TransitionablePortal
+          open={modalOpenState}
+          onOpen={() => setTimeout(() => document.body.classList.add('modal-fade-in'), 0)}
+          transition={{ animation: 'scale', duration: 500 }}
+        >
         <Modal open={modalOpenState} onClose={closeModal}>
             <Modal.Header>
                 Create Public Channel
@@ -300,7 +315,9 @@ const Channels = (props) => {
                     <Icon name="remove" /> Cancel
                 </Button>
             </Modal.Actions>
+           
         </Modal>
+        </TransitionablePortal>
         </div>
     </>
 }

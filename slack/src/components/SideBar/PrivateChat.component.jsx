@@ -7,7 +7,10 @@ import { Notification } from "./Notification.component";
 import { Menu, Icon } from 'semantic-ui-react';
 
 const PrivateChat = (props) => {
-
+    var u = null;;
+    if (props.user != null)
+        u = props.user.uid;
+    
     const [usersState, setUsersState] = useState([]);
 
     const [connectedUsersState, setConnectedUsersState] = useState([]);
@@ -85,7 +88,7 @@ const PrivateChat = (props) => {
                         displayName={"@ " + user.name} /> 
                         
                 </Menu.Item>
-            })
+                })
         }
     }
 

@@ -11,7 +11,11 @@ const removeChannel =() => {
 }
 
 const MessageHeader = (props) => {
-    return <Segment clearing>
+    return (
+    <div class="ui grey inverted segment">
+
+   <Segment clearing>
+        
         <Header floated="left" fluid="true" as="h2">
             <span >
                 {(props.isPrivateChat ? "@ " : "# ") + props.channelName}
@@ -35,6 +39,8 @@ const MessageHeader = (props) => {
         </Header>
 
     </Segment>
+    </div> 
+    )
 }
 
 export default MessageHeader;

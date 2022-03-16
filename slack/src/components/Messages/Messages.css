@@ -3,6 +3,7 @@
     width: auto;
     overflow-y: scroll;
     /* background: url('../../bg.png'); */
+    background-image: url("../../bgi.jpeg");
 }
 
 .messages{

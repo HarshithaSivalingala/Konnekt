@@ -12,7 +12,7 @@ const removeChannel =() => {
 
 const MessageHeader = (props) => {
     return (
-    <div class="ui grey inverted segment">
+    
 
    <Segment clearing>
         
@@ -39,7 +39,7 @@ const MessageHeader = (props) => {
         </Header>
 
     </Segment>
-    </div> 
+   
     )
 }
 

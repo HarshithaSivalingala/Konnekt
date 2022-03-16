@@ -259,7 +259,7 @@ const Channels = (props) => {
                 </Form>
             </Modal.Content>
             <Modal.Actions>
-                <Button color = "green" loading={isLoadingState} onClick={onSubmit1}>
+                <Button color = "green" loading={isLoadingState} onClick={onSubmit1} >
                     <Icon name="checkmark" /> Save
                 </Button>
                 <Button color="red" onClick={closeModalPrivate}>
@@ -270,7 +270,7 @@ const Channels = (props) => {
         
         <Modal open={modalOpenState} onClose={closeModal}>
             <Modal.Header>
-                Create Channel
+                Create Public Channel
             </Modal.Header>
             <Modal.Content>
                 <Form onSubmit={onSubmit}>
@@ -293,7 +293,7 @@ const Channels = (props) => {
                 </Form>
             </Modal.Content>
             <Modal.Actions>
-                <Button color = "green" loading={isLoadingState} onClick={onSubmit}>
+                <Button color = "green" loading={isLoadingState} onClick={onSubmit} positive>
                     <Icon name="checkmark" /> Save
                 </Button>
                 <Button color="red" onClick={closeModal}>

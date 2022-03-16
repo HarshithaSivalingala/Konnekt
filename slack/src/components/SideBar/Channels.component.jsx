@@ -174,14 +174,14 @@ const Channels = (props) => {
     return <> <Menu.Menu style={{ marginTop: '35px' }}>
         <Menu.Item>
             <span className="clickable" onClick={openModal2} >
-                <Icon name="add" /> ADD CHANNEL
+                <p><Icon name="add" />ADD CHANNEL</p>
             </span>
         </Menu.Item>
         <selectChannel1/>
         <br></br>  
         <Menu.Item style={{fontSize : '17px'}}>
-            <span>
-                <Icon name="bullhorn" />  Public
+            <span className="clickable">
+                <p><Icon name="bullhorn"/>Public</p>
             </span>
             <tb/>({pubchannelsState.length})
         </Menu.Item>
@@ -199,10 +199,8 @@ const Channels = (props) => {
                 <Button loading={isLoadingState} onClick={closeModal2}>
                     Close
                 </Button>
-
-                
                 <Button style={{float: 'left'}} loading={isLoadingState} onClick={openModalPrivate}>
-                    <Icon name="user secret" /> Private
+                        <Icon name="user secret" /> Private  
                 </Button>
             </Modal.Actions>
         </Modal>

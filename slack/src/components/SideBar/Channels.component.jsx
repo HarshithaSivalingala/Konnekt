@@ -5,7 +5,8 @@ import { setChannel} from "../../store/actioncreator";
 import { Notification } from "./Notification.component";
 import onSubmit1 from "./Private.component";
 import './Channels.css';
-import { Menu, Icon, Modal, Button, Form, Segment} from 'semantic-ui-react';
+import { Menu, Icon, Modal, Button, Form, Segment, TransitionablePortal, event} from 'semantic-ui-react';
+
 
 const Channels = (props) => {
     const [modalOpenState, setModalOpenState] = useState(false);
@@ -171,7 +172,11 @@ const Channels = (props) => {
         })
     }
 
-    return <> <Menu.Menu style={{ marginTop: '35px' }}>
+    return <> 
+    <div>
+
+    
+    <Menu.Menu style={{ marginTop: '35px' }}>
         <Menu.Item>
             <span className="clickable" onClick={openModal2} >
                 <p><Icon name="add" />ADD CHANNEL</p>
@@ -187,24 +192,32 @@ const Channels = (props) => {
         </Menu.Item>
         {displayChannels()}
         <Menu.Item>
-        <Modal size={'tiny'}open={modalopen} onClose={closeModal}>
+        <TransitionablePortal
+          open={modalopen}
+          onOpen={() => setTimeout(() => document.body.classList.add('modal-fade-in'), 0)}
+          transition={{ animation: 'scale', duration: 500 }}
+        >
+        <Modal size={'tiny'}open={modalopen} onOpen={() => setTimeout(() => document.body.classList.add('modal-fade-in'), 0)}
+          transition={{ animation: 'scale', duration: 500 }} onClose= {closeModal}>
             <Modal.Header>
                 Choose a new Workspace 
             </Modal.Header>
             
             <Modal.Actions>
-                <Button style={{float: 'left'}} loading={isLoadingState} onClick={openModal}>
+                <Button color = "facebook" style={{float: 'left'}} loading={isLoadingState} onClick={openModal} >
                     <Icon name="bullhorn" /> Public 
                 </Button>
-                <Button loading={isLoadingState} onClick={closeModal2}>
+                <Button color = "red" loading={isLoadingState} onClick={closeModal2}>
                     Close
                 </Button>
-                <Button style={{float: 'left'}} loading={isLoadingState} onClick={openModalPrivate}>
+                <Button color = "facebook" style={{float: 'left'}} loading={isLoadingState} onClick={openModalPrivate}>
                         <Icon name="user secret" /> Private  
                 </Button>
             </Modal.Actions>
         </Modal>
+        </TransitionablePortal>
         </Menu.Item>
+        
     </Menu.Menu>
     
     <Modal open={modalOpenState1} onClose={closeModalPrivate}>
@@ -246,10 +259,10 @@ const Channels = (props) => {
                 </Form>
             </Modal.Content>
             <Modal.Actions>
-                <Button loading={isLoadingState} onClick={onSubmit1}>
+                <Button color = "green" loading={isLoadingState} onClick={onSubmit1}>
                     <Icon name="checkmark" /> Save
                 </Button>
-                <Button onClick={closeModalPrivate}>
+                <Button color="red" onClick={closeModalPrivate}>
                     <Icon name="remove" /> Cancel
                 </Button>
             </Modal.Actions>
@@ -280,14 +293,15 @@ const Channels = (props) => {
                 </Form>
             </Modal.Content>
             <Modal.Actions>
-                <Button loading={isLoadingState} onClick={onSubmit}>
+                <Button color = "green" loading={isLoadingState} onClick={onSubmit}>
                     <Icon name="checkmark" /> Save
                 </Button>
-                <Button onClick={closeModal}>
+                <Button color="red" onClick={closeModal}>
                     <Icon name="remove" /> Cancel
                 </Button>
             </Modal.Actions>
         </Modal>
+        </div>
     </>
 }
 

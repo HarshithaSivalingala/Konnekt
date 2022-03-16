@@ -112,14 +112,18 @@ const Messages = (props) => {
         return Object.keys(props.favouriteChannels).includes(props.channel?.id);
     }
 
-    return <div className="messages"><MessageHeader starChange={starChange} starred={isStarred()} isPrivateChat={props.channel?.isPrivateChat} searchTermChange={searchTermChange} channelName={props.channel?.name} uniqueUsers={uniqueusersCount()} />
+    return (
+    <div className="messages"><MessageHeader starChange={starChange} starred={isStarred()} isPrivateChat={props.channel?.isPrivateChat} searchTermChange={searchTermChange} channelName={props.channel?.name} uniqueUsers={uniqueusersCount()} />
         <Segment className="messagecontent">
             <Comment.Group>
                 {displayMessages()}
                 <div ref={currentEl => divRef = currentEl}></div>
             </Comment.Group>
         </Segment>
-        <MessageInput /></div>
+        <MessageInput />
+        </div>
+    
+    )
 }
 
 const mapStateToProps = (state) => {

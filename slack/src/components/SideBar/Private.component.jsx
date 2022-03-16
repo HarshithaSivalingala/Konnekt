@@ -15,9 +15,7 @@ const Private  = (props) => {
     const [modalopen, setModalOpen] = useState(false);
     const [channelAddState, setChannelAddState] = useState({ name: '', description: '', password: ''});
     const [isLoadingState, setLoadingState] = useState(false);
-    // const [channelAddState, setChannelAddState] = useState({ name: '', description: '', password: ''});
-    // console.log(channelAddState.password)
-    // console.log(channelAddState.name)
+    
 
 
     const channels = firebase.database().ref("prichannels");

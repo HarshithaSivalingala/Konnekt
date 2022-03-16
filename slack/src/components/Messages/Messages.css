@@ -2,11 +2,11 @@
     height: 500px;
     width: auto;
     overflow-y: scroll;
+    /* background: url('../../bg.png'); */
 }
 
 .messages{
+    /* background: url('../../bg.png'); */
     padding-top : 10px;
 }
-.header {
-    /* background-color: rgb(240, 157, 236); */
-}
+

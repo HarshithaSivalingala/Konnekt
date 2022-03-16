@@ -8,6 +8,7 @@ import Auth from './components/Auth/Login.component'
 
 function App() {
   return (
+    <div className='bg'>
     <Grid columns="equal">
       
       <SideBar />
@@ -15,13 +16,13 @@ function App() {
         <Messages />
       </Grid.Column>
 
-      <Grid.Column width={3}>
+      <Grid.Column width={1}>
         <span>
 
         </span>
       </Grid.Column>
     </Grid>
-
+</div>
   );
 }
 

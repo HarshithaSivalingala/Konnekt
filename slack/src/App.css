@@ -1,3 +1,9 @@
 .messagepanel {
     padding-left: 300px !important;
 }
+.bg {
+    background: url('./imagee.jpg');
+    background-position-x: right;
+    background-size: contain;
+    background-repeat: repeat;
+}

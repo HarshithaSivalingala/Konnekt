@@ -14,6 +14,7 @@ import firebase from 'firebase'
 import './Login.css'
 import './Auth.css'
 
+
 const Login = () => {
   let user = {
     email: '',
@@ -73,8 +74,11 @@ const Login = () => {
 
   return (
     <>
+   
       <div class='container'>
+   
         <h1>KONNEKT</h1>
+       
       </div>
       <div className='forms'>
         <Grid verticalAlign='middle' textAlign='center' className='grid-form-l'>
@@ -125,6 +129,7 @@ const Login = () => {
             </Message>
           </Grid.Column>
         </Grid>
+        
       </div>
     </>
   )

@@ -2,6 +2,7 @@ import firebase from 'firebase';
 import 'firebase/auth';
 import 'firebase/storage';
 import 'firebase/database';
+// import { getDatabase } from 'https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js';
 
 const firebaseConfig = {
 
@@ -26,5 +27,6 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
+
 
 export default firebase;

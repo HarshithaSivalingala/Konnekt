@@ -12,6 +12,7 @@ import firebase from 'firebase'
 
 import './Auth.css'
 import { Link } from 'react-router-dom'
+import video from './vi.mp4'
 
 const Register = () => {
   let user = {
@@ -138,7 +139,10 @@ const Register = () => {
 
   return (
     <>
-      <div class='container'>
+    <div class='container'>
+    <video autoPlay loop muted id="video" className='video'>
+    <source src={video} type= 'video/mp4'/>
+    </video>
         <h1>KONNEKT</h1>
       </div>
       <div className='forms'>

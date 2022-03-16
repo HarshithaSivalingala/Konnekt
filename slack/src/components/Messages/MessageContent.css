@@ -1,4 +1,8 @@
-.ownMessage{
-    border-left : 2px solid orange;
-    padding-left: 6px;
+.my {
+  padding-left: 40px;
+}
+
+.ownMessage {
+  border-left: 2px solid orange;
+  padding-left: 6px;
 }

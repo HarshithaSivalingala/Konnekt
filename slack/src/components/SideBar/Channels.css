@@ -1,26 +1,26 @@
-.ui.menu .item{
-    color : rgba(6, 8, 8, 0.836) !important;
+.ui.menu.item {
+  color: rgb(28, 28, 36) !important;
+  border-radius: 20px;
 }
 
-.clickable:hover{
-    cursor: pointer;
+.clickable:hover {
+  cursor: pointer;
 }
 
-.ui.menu .item.active{
-    background : #6aa4d1 !important;
+.ui.menu .item.active {
+  background: #1164a3 !important;
 }
 
 .modal-content {
-    height: 500px;
-  }
-.modal-container{
-    height: 24.37500rem;
-    
-  }
-.clickable p{
-     color :hsla(0, 0%, 3%, 0.973);
-     float : left;
-     font-size: 15px; 
-     border-radius:5px;
-     border-style:solid;
+  height: 500px;
+}
+.modal-container {
+  height: 24.375rem;
+}
+
+.mains {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
 }

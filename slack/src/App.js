@@ -15,7 +15,7 @@ function App() {
         <Messages />
       </Grid.Column>
 
-      <Grid.Column width={3}>
+      <Grid.Column width={1}>
         <span>
 
         </span>

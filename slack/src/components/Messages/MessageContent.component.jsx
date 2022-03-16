@@ -1,5 +1,5 @@
 import React from 'react';
-import { Comment,Image } from "semantic-ui-react";
+import { Comment,Image, Segment, Message } from "semantic-ui-react";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 import Avatar from 'react-avatar';
@@ -14,7 +14,7 @@ const MessageContent = (props) => {
         <Avatar
         style={{marginRight:'10px'}}
         name={props.message.user.name}
-        size={35}
+        size={30}
         round='20px'
         />
         <Comment.Author as='a'>{props.message.user.name}</Comment.Author>

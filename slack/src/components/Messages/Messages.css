@@ -2,11 +2,9 @@
     height: 500px;
     width: auto;
     overflow-y: scroll;
+    background-image: url("../../bgi.jpeg");
 }
 
 .messages{
     padding-top : 10px;
-}
-.header {
-    /* background-color: rgb(240, 157, 236); */
 }

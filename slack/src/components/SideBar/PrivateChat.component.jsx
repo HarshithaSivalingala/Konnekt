@@ -7,7 +7,10 @@ import { Notification } from "./Notification.component";
 import { Menu, Icon } from 'semantic-ui-react';
 
 const PrivateChat = (props) => {
-
+    var u = null;;
+    if (props.user != null)
+        u = props.user.uid;
+    
     const [usersState, setUsersState] = useState([]);
 
     const [connectedUsersState, setConnectedUsersState] = useState([]);
@@ -70,7 +73,9 @@ const PrivateChat = (props) => {
 
     const displayUsers = () => {
         if (usersState.length > 0) {
-            return usersState.filter((user) => user.id !== props.user.uid).map((user) => {
+            return usersState.filter((user) => (u != null) &&  (user.id !== u)).map((user) => {
+            // return usersState.map((user) => {
+                
                 // console.log(props.user.uid);
                 return <Menu.Item
                     key={user.id}
@@ -85,7 +90,7 @@ const PrivateChat = (props) => {
                         displayName={"@ " + user.name} /> 
                         
                 </Menu.Item>
-            })
+                })
         }
     }
 
@@ -104,11 +109,11 @@ const PrivateChat = (props) => {
     }
 
     const generateChannelId = (userId) => {
-        if (props.user.uid < userId) {
-            return props.user.uid + userId;
+        if (u < userId) {
+            return u + userId;
         }
         else {
-            return userId + props.user.uid;
+            return userId + u;
         }
     }
 

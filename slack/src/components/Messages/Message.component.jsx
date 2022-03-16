@@ -113,6 +113,7 @@ const Messages = (props) => {
     }
 
     return <div className="messages"><MessageHeader starChange={starChange} starred={isStarred()} isPrivateChat={props.channel?.isPrivateChat} searchTermChange={searchTermChange} channelName={props.channel?.name} uniqueUsers={uniqueusersCount()} />
+        <div class="ui grey inverted segment">
         <Segment className="messagecontent">
             <Comment.Group>
                 {displayMessages()}
@@ -120,6 +121,7 @@ const Messages = (props) => {
             </Comment.Group>
         </Segment>
         <MessageInput /></div>
+        </div>
 }
 
 const mapStateToProps = (state) => {

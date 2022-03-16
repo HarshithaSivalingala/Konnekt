@@ -7,6 +7,7 @@ import { Grid } from 'semantic-ui-react';
 import Auth from './components/Auth/Login.component'
 
 function App() {
+
   return (
     <div className='bg'>
     <Grid columns="equal">

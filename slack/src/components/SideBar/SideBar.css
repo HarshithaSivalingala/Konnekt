@@ -1,5 +1,9 @@
 .side_bar{
-    background : #24384e !important;
+    /* background : #e281da !important;  */
+    background : #62dbc7 !important;
     font-size : 1.2rem  !important;
     overflow-y: scroll;
+
+    /* background: url('../../bg.png'); */
+    
 }

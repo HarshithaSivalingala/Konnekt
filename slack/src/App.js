@@ -8,6 +8,7 @@ import Auth from './components/Auth/Login.component'
 
 function App() {
   return (
+    <div className='bg'>
     <Grid columns="equal">
       
       <SideBar />
@@ -21,7 +22,7 @@ function App() {
         </span>
       </Grid.Column>
     </Grid>
-
+</div>
   );
 }
 

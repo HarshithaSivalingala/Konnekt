@@ -2,9 +2,12 @@
     height: 500px;
     width: auto;
     overflow-y: scroll;
+    /* background: url('../../bg.png'); */
     background-image: url("../../bgi.jpeg");
 }
 
 .messages{
+    /* background: url('../../bg.png'); */
     padding-top : 10px;
 }
+

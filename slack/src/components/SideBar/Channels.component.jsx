@@ -198,7 +198,7 @@ const Channels = (props) => {
           transition={{ animation: 'scale', duration: 500 }}
         >
         <Modal size={'tiny'}open={modalopen} onOpen={() => setTimeout(() => document.body.classList.add('modal-fade-in'), 0)}
-          transition={{ animation: 'scale', duration: 500 }} onClose= {closeModal}>
+          transition={{ animation: 'scale', duration: 500}} onClose= {closeModal}>
             <Modal.Header>
                 Choose a new Workspace 
             </Modal.Header>

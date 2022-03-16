@@ -202,7 +202,7 @@ const Channels = (props) => {
             <Modal.Header>Choose a new Workspace</Modal.Header>
 
             <Modal.Actions>
-              <Button
+              <Button color="facebook"
                 style={{ float: 'left' }}
                 loading={isLoadingState}
                 onClick={openModal}
@@ -213,7 +213,7 @@ const Channels = (props) => {
                 Close
               </Button>
 
-              <Button
+              <Button color="facebook"
                 style={{ float: 'left' }}
                 loading={isLoadingState}
                 onClick={openModalPrivate}
@@ -223,83 +223,91 @@ const Channels = (props) => {
             </Modal.Actions>
           </Modal>
         </Menu.Item>
-      </Menu.Menu>
-      <Modal open={modalOpenState1} onClose={closeModalPrivate}>
-        <Modal.Header>Create Private Channel</Modal.Header>
-        <Modal.Content>
-          <Form onSubmit={onSubmit}>
-            <Segment stacked>
-              <Form.Input
-                name='name'
-                value={channelAddState.name}
-                onChange={handleInput}
-                type='text'
-                placeholder='Enter Channel Name'
-              />
-              <Form.Input
-                name='description'
-                value={channelAddState.description}
-                onChange={handleInput}
-                type='text'
-                placeholder='User ID'
-              />
-              <Form.Input
-                name='password'
-                value={channelAddState.password}
-                onChange={handleInput}
-                type='password'
-                placeholder='Room Code'
-              />
-              <Form.Input
-                name='confirmpassword'
-                value={channelAddState.confirmpassword}
-                onChange={handleInput}
-                type='password'
-                placeholder='Confirm Room Code'
-              />
-            </Segment>
-          </Form>
-        </Modal.Content>
-        <Modal.Actions>
-          <Button loading={isLoadingState} onClick={onSubmit1}>
-            <Icon name='checkmark' /> Save
-          </Button>
-          <Button onClick={closeModalPrivate}>
-            <Icon name='remove' /> Cancel
-          </Button>
-        </Modal.Actions>
-      </Modal>
-      <Modal open={modalOpenState} onClose={closeModal}>
-        <Modal.Header>Create Channel</Modal.Header>
-        <Modal.Content>
-          <Form onSubmit={onSubmit}>
-            <Segment stacked>
-              <Form.Input
-                name='name'
-                value={channelAddState.name}
-                onChange={handleInput}
-                type='text'
-                placeholder='Enter Channel Name'
-              />
-              <Form.Input
-                name='description'
-                value={channelAddState.description}
-                onChange={handleInput}
-                type='text'
-                placeholder='Enter Channel Description'
-              />
-            </Segment>
-          </Form>
-        </Modal.Content>
-        <Modal.Actions>
-          <Button loading={isLoadingState} onClick={onSubmit}>
-            <Icon name='checkmark' /> Save
-          </Button>
-          <Button onClick={closeModal}>
-            <Icon name='remove' /> Cancel
-          </Button>
-        </Modal.Actions>
-      </Modal>
+        
+    </Menu.Menu>
+    
+    <Modal open={modalOpenState1} onClose={closeModalPrivate}>
+            <Modal.Header>
+                Create Private Channel
+            </Modal.Header>
+            <Modal.Content>
+                <Form onSubmit={onSubmit}>
+                    <Segment stacked>
+                        <Form.Input
+                            name="name"
+                            value={channelAddState.name}
+                            onChange={handleInput}
+                            type="text"
+                            placeholder="Enter Channel Name"
+                        />
+                        <Form.Input
+                            name="description"
+                            value={channelAddState.description}
+                            onChange={handleInput}
+                            type="text"
+                            placeholder="User ID"
+                        />
+                        <Form.Input
+                            name="password"
+                            value={channelAddState.password}
+                            onChange={handleInput}
+                            type="password"
+                            placeholder="Room Code"
+                        />
+                        <Form.Input
+                            name="confirmpassword"
+                            value={channelAddState.confirmpassword}
+                            onChange={handleInput}
+                            type="password"
+                            placeholder="Confirm Room Code"
+                        />
+                    </Segment>
+                </Form>
+            </Modal.Content>
+            <Modal.Actions>
+                <Button color = "green" loading={isLoadingState} onClick={onSubmit1} >
+                    <Icon name="checkmark" /> Save
+                </Button>
+                <Button color="red" onClick={closeModalPrivate}>
+                    <Icon name="remove" /> Cancel
+                </Button>
+            </Modal.Actions>
+        </Modal>
+        
+        <Modal open={modalOpenState} onClose={closeModal}>
+            <Modal.Header>
+                Create Public Channel
+            </Modal.Header>
+            <Modal.Content>
+                <Form onSubmit={onSubmit}>
+                    <Segment stacked>
+                        <Form.Input
+                            name="name"
+                            value={channelAddState.name}
+                            onChange={handleInput}
+                            type="text"
+                            placeholder="Enter Channel Name"
+                        />
+                        <Form.Input
+                            name="description"
+                            value={channelAddState.description}
+                            onChange={handleInput}
+                            type="text"
+                            placeholder="Enter Channel Description"
+                        />
+                    </Segment>
+                </Form>
+            </Modal.Content>
+            <Modal.Actions>
+                <Button color = "green" loading={isLoadingState} onClick={onSubmit} positive>
+                    <Icon name="checkmark" /> Save
+                </Button>
+                <Button color="red" onClick={closeModal}>
+                    <Icon name="remove" /> Cancel
+                </Button>
+            </Modal.Actions>
+        </Modal>
+        
     </>
   )
 }

@@ -13,6 +13,7 @@ const removeChannel =() => {
 const MessageHeader = (props) => {
     return (
   
+    
 
    <Segment clearing>
         
@@ -40,6 +41,7 @@ const MessageHeader = (props) => {
 
     </Segment>
   
+   
     )
 }
 

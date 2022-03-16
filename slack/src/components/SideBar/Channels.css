@@ -1,5 +1,5 @@
-.ui.menu.item{
-    color : rgb(28, 28, 36) !important;
+.ui.menu .item{
+    color : rgba(6, 8, 8, 0.836) !important;
 }
 
 .clickable:hover{
@@ -15,4 +15,12 @@
   }
 .modal-container{
     height: 24.37500rem;
+    
   }
+.clickable p{
+     color :hsla(0, 0%, 3%, 0.973);
+     float : left;
+     font-size: 15px; 
+     border-radius:5px;
+     border-style:solid;
+}

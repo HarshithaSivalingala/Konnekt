@@ -3,17 +3,15 @@ import { Segment, Header, Input, Icon } from 'semantic-ui-react';
 import './Messages.css';
 import {firebaseConfig, getDatabase}from 'firebase';
 
-const removeChannel =() => {
-    // ref = Constants.Client+"/"+Constants.firebaseProjects+"/"+Constants.ProjectName+"konnekt";
-    // var ref = getDatabase(firebaseConfig).ref('pubchannels').child("My8KuAeDL6HtgddtxWG");
-    // console.log(ref);
-    // ref.child("pubchannels").child("My8KuAeDL6HtgddtxWG").removeValue();
-}
 
 const MessageHeader = (props) => {
+    const removeChannel =() => {
+        // ref = Constants.Client+"/"+Constants.firebaseProjects+"/"+Constants.ProjectName+"konnekt";
+        var ref = getDatabase(firebaseConfig()).ref('pubchannels').child("My8KuAeDL6HtgddtxWG");
+        console.log(ref);
+        ref.child("pubchannels").child("My8KuAeDL6HtgddtxWG").removeValue();
+    }
     return (
-  
-    
 
    <Segment clearing>
         

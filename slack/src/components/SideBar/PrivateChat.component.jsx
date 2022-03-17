@@ -133,7 +133,7 @@ const PrivateChat = (props) => {
       <Menu.Item style={{ fontSize: '17px' }}>
         <span className='mains'>
           <Message fontSize='large' />
-          <span> Chat({usersState.length - 1})</span>
+          <span> Chat          ({usersState.length - 1})</span>
         </span>
       </Menu.Item>
       {displayUsers()}

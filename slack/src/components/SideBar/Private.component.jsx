@@ -87,7 +87,7 @@ const Private = (props) => {
         <Menu.Item style={{ fontSize: '17px' }}>
           <span className='mains'>
             <LockOpen fontSize='large' />
-            <span>Private({prichannelsState.length})</span>
+            <span>Private             ({prichannelsState.length})</span>
           </span>
         </Menu.Item>
         {displayChannels()}

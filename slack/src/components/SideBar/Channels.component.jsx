@@ -225,7 +225,7 @@ const Channels = (props) => {
         <Menu.Item style={{fontSize : '17px'}}>
             <span className="mains">
               <Public fontsize='large'/>
-                <span> Public({pubchannelsState.length})</span>{' '}
+                <span> Public              ({pubchannelsState.length})</span>{' '}
             </span>
         </Menu.Item>
         {displayChannels()}

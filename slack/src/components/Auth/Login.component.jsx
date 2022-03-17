@@ -117,10 +117,10 @@ const Login = () => {
               </Button>
               <br />
               <br />
-              <Button circular color='facebook' icon='facebook' />
+              {/* <Button circular color='facebook' icon='facebook' />
               <Button circular color='twitter' icon='twitter' />
               <Button circular color='linkedin' icon='linkedin' />
-              <Button circular color='google plus' icon='google plus' />
+              <Button circular color='google plus' icon='google plus' /> */}
             </Form>
             {errorState.length > 0 && (
               <Message error>

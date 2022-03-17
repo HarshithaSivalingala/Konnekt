@@ -90,6 +90,9 @@ const Channels = (props) => {
     const checkIfFormValid = () => {
         return channelAddState && channelAddState.name && channelAddState.description && channelAddState.password;
     }
+    const checkIfformvalid = () => {
+        return channelAddState && channelAddState.name && channelAddState.description
+    }
 
     const displayChannels = () => {
         if (pubchannelsState.length > 0) {
@@ -123,16 +126,52 @@ const Channels = (props) => {
         lastVisited.onDisconnect().set(firebase.database.ServerValue.TIMESTAMP);
     }
 
+    const onSubmit1 = () => {
+        setModalOpen1(false)
+        privateSet(false)
+        setModalOpen(false)
+    
+        if (!checkIfFormValid()) {
+          return
+        }
+    
+        const key = channels.push().key
+    
+        const channel = {
+          id: key,
+          name: channelAddState.name,
+          description: channelAddState.description,
+          password: channelAddState.password,
+          created_by: {
+            name: props.user.displayName,
+            avatar: props.user.photoURL,
+          },
+        }
+        // console.log(channel.password)
+    
+        setLoadingState(true)
+        channels
+          .child(key)
+          .update(channel)
+          .then(() => {
+            setChannelAddState({ name: '', description: '', password: '' })
+            setLoadingState(false)
+            closeModalPrivate()
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
+
    
  
 
-    const onSubmit = () => {
+    const onSubmit2 = () => {
+        // prompt("something")
         setModalOpen(false);
         privateSet(false);
         
-       
-
-        if (!checkIfFormValid()) {
+        if (!checkIfformvalid()) {
             return false;
         }
 
@@ -174,7 +213,6 @@ const Channels = (props) => {
 
     return (
     <>
-    {' '}
     
     <Menu.Menu style={{ marginTop: '35px' }}>
         <Menu.Item>
@@ -225,7 +263,7 @@ const Channels = (props) => {
     <TransitionablePortal
           open={modalOpenState1}
           onOpen={() => setTimeout(() => document.body.classList.add('modal-fade-in'), 0)}
-          transition={{ animation: 'scale', duration: 500 }}
+          transition={{ animation: 'scale', duration: 500 }} close={closeModalPrivate}
         >
     
     <Modal open={modalOpenState1} onClose={closeModalPrivate}>
@@ -233,7 +271,7 @@ const Channels = (props) => {
                 Create Private Channel
             </Modal.Header>
             <Modal.Content>
-                <Form onSubmit={onSubmit}>
+                <Form onSubmit={onSubmit1}>
                     <Segment stacked>
                         <Form.Input
                             name="name"
@@ -278,17 +316,13 @@ const Channels = (props) => {
         </Modal>
         </TransitionablePortal>
         
-        <TransitionablePortal
-          open={modalOpenState}
-          onOpen={() => setTimeout(() => document.body.classList.add('modal-fade-in'), 0)}
-          transition={{ animation: 'scale', duration: 500 }}
-        >
+ 
         <Modal open={modalOpenState} onClose={closeModal}>
             <Modal.Header>
                 Create Public Channel
             </Modal.Header>
             <Modal.Content>
-                <Form onSubmit={onSubmit}>
+                <Form onSubmit={onSubmit2}>
                     <Segment stacked>
                         <Form.Input
                             name="name"
@@ -308,7 +342,7 @@ const Channels = (props) => {
                 </Form>
             </Modal.Content>
             <Modal.Actions>
-                <Button color = "green" loading={isLoadingState} onClick={onSubmit} positive>
+                <Button color = "green" loading={isLoadingState} onClick={onSubmit2} >
                     <Icon name="checkmark" /> Save
                 </Button>
                 <Button color="red" onClick={closeModal}>
@@ -317,8 +351,9 @@ const Channels = (props) => {
             </Modal.Actions>
            
         </Modal>
+        
     
-        </TransitionablePortal>
+     
         
     </>
     )

@@ -16,6 +16,8 @@ import './Auth.css'
 import video from './vi.mp4'
 
 
+
+
 const Login = () => {
   let user = {
     email: '',
@@ -115,12 +117,18 @@ const Login = () => {
               <Button disabled={isLoading} loading={isLoading}>
                 Login
               </Button>
+       
               <br />
               <br />
-              {/* <Button circular color='facebook' icon='facebook' />
-              <Button circular color='twitter' icon='twitter' />
-              <Button circular color='linkedin' icon='linkedin' />
-              <Button circular color='google plus' icon='google plus' /> */}
+              
+              <tb/>
+              <Button color='google plus' onClick={() => {
+          const googleAuth = 
+          new firebase.auth.GoogleAuthProvider();
+          firebase.auth().signInWithPopup(googleAuth); }}>
+                  <Icon name='google plus' /> Sign in with Google
+              </Button>
+              
             </Form>
             {errorState.length > 0 && (
               <Message error>

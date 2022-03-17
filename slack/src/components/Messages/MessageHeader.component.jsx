@@ -23,7 +23,7 @@ const MessageHeader = (props) => {
                     name={props.starred ? "star" : "star outline"}
                     color={props.starred ? "yellow" : "black"} />
                     }
-                    <Icon name="trash" onClick={removeChannel}></Icon>
+                   
             </span>
             <Header.Subheader> {props.uniqueUsers} User{props.uniqueUsers === 1 ? "" : "s"}</Header.Subheader>
         </Header>

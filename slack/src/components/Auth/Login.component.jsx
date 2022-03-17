@@ -79,7 +79,7 @@ const Login = () => {
 
    
       <div class='container'>
-      <video autoPlay loop muted id="video" className='video'>
+      <video autoPlay loop  muted id="video" className='video'>
       <source src={video} type= 'video/mp4'/>
       </video>
         <h1>KONNEKT</h1>

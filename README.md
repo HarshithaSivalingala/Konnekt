@@ -1,5 +1,5 @@
-# Slack-clone
+# Konnket
 
-Slack Clone using React-Redux
+Konnekt using React-Redux and firebase.
 
 
